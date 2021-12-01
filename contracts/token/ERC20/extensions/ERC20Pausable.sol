@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../ERC20.sol";
 import "../../../security/Pausable.sol";
 
-/**
+/*
  * @dev ERC20 token with pausable token transfers, minting and burning.
  *
  * Useful for scenarios such as preventing trades until the end of an evaluation
@@ -13,7 +13,7 @@ import "../../../security/Pausable.sol";
  * event of a large bug.
  */
 abstract contract ERC20Pausable is ERC20, Pausable {
-    /**
+    /*
      * @dev See {ERC20-_beforeTokenTransfer}.
      *
      * Requirements:

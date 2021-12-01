@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./SafeERC20.sol";
 
-/**
+/*
  * @dev A token holder contract that will allow a beneficiary to extract the
  * tokens after a given release time.
  *
@@ -34,28 +34,28 @@ contract TokenTimelock {
         _releaseTime = releaseTime_;
     }
 
-    /**
+    /*
      * @return the token being held.
      */
     function token() public view virtual returns (IERC20) {
         return _token;
     }
 
-    /**
+    /*
      * @return the beneficiary of the tokens.
      */
     function beneficiary() public view virtual returns (address) {
         return _beneficiary;
     }
 
-    /**
+    /*
      * @return the time when the tokens are released.
      */
     function releaseTime() public view virtual returns (uint256) {
         return _releaseTime;
     }
 
-    /**
+    /*
      * @notice Transfers tokens held by timelock to beneficiary.
      */
     function release() public virtual {

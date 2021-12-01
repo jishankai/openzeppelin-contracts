@@ -6,7 +6,7 @@ import "../ERC20.sol";
 import "../../../utils/Arrays.sol";
 import "../../../utils/Counters.sol";
 
-/**
+/*
  * @dev This contract extends an ERC20 token with a snapshot mechanism. When a snapshot is created, the balances and
  * total supply at the time are recorded for later access.
  *
@@ -58,12 +58,12 @@ abstract contract ERC20Snapshot is ERC20 {
     // Snapshot ids increase monotonically, with the first value being 1. An id of 0 is invalid.
     Counters.Counter private _currentSnapshotId;
 
-    /**
+    /*
      * @dev Emitted by {_snapshot} when a snapshot identified by `id` is created.
      */
     event Snapshot(uint256 id);
 
-    /**
+    /*
      * @dev Creates a new snapshot and returns its snapshot id.
      *
      * Emits a {Snapshot} event that contains the same id.
@@ -92,14 +92,14 @@ abstract contract ERC20Snapshot is ERC20 {
         return currentId;
     }
 
-    /**
+    /*
      * @dev Get the current snapshotId
      */
     function _getCurrentSnapshotId() internal view virtual returns (uint256) {
         return _currentSnapshotId.current();
     }
 
-    /**
+    /*
      * @dev Retrieves the balance of `account` at the time `snapshotId` was created.
      */
     function balanceOfAt(address account, uint256 snapshotId) public view virtual returns (uint256) {
@@ -108,7 +108,7 @@ abstract contract ERC20Snapshot is ERC20 {
         return snapshotted ? value : balanceOf(account);
     }
 
-    /**
+    /*
      * @dev Retrieves the total supply at the time `snapshotId` was created.
      */
     function totalSupplyAt(uint256 snapshotId) public view virtual returns (uint256) {

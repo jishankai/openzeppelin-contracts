@@ -6,7 +6,7 @@ import "../token/ERC20/IERC20.sol";
 import "../interfaces/IERC3156.sol";
 import "../utils/Address.sol";
 
-/**
+/*
  * @dev WARNING: this IERC3156FlashBorrower mock implementation is for testing purposes ONLY.
  * Writing a secure flash lock borrower is not an easy task, and should be done with the utmost care.
  * This is not an example of how it should be done, and no pattern present in this mock should be considered secure.

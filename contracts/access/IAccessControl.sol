@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev External interface of AccessControl declared to support ERC165 detection.
  */
 interface IAccessControl {
-    /**
+    /*
      * @dev Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole`
      *
      * `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite
@@ -16,7 +16,7 @@ interface IAccessControl {
      */
     event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole);
 
-    /**
+    /*
      * @dev Emitted when `account` is granted `role`.
      *
      * `sender` is the account that originated the contract call, an admin role
@@ -24,7 +24,7 @@ interface IAccessControl {
      */
     event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender);
 
-    /**
+    /*
      * @dev Emitted when `account` is revoked `role`.
      *
      * `sender` is the account that originated the contract call:
@@ -33,12 +33,12 @@ interface IAccessControl {
      */
     event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
 
-    /**
+    /*
      * @dev Returns `true` if `account` has been granted `role`.
      */
     function hasRole(bytes32 role, address account) external view returns (bool);
 
-    /**
+    /*
      * @dev Returns the admin role that controls `role`. See {grantRole} and
      * {revokeRole}.
      *
@@ -46,7 +46,7 @@ interface IAccessControl {
      */
     function getRoleAdmin(bytes32 role) external view returns (bytes32);
 
-    /**
+    /*
      * @dev Grants `role` to `account`.
      *
      * If `account` had not been already granted `role`, emits a {RoleGranted}
@@ -58,7 +58,7 @@ interface IAccessControl {
      */
     function grantRole(bytes32 role, address account) external;
 
-    /**
+    /*
      * @dev Revokes `role` from `account`.
      *
      * If `account` had been granted `role`, emits a {RoleRevoked} event.
@@ -69,7 +69,7 @@ interface IAccessControl {
      */
     function revokeRole(bytes32 role, address account) external;
 
-    /**
+    /*
      * @dev Revokes `role` from the calling account.
      *
      * Roles are often managed via {grantRole} and {revokeRole}: this function's

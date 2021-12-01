@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../ERC777.sol";
 
-/**
+/*
  * @dev {ERC777} token, including:
  *
  *  - Preminted initial supply
@@ -12,7 +12,7 @@ import "../ERC777.sol";
  * _Available since v3.4._
  */
 contract ERC777PresetFixedSupply is ERC777 {
-    /**
+    /*
      * @dev Mints `initialSupply` amount of token and transfers them to `owner`.
      *
      * See {ERC777-constructor}.

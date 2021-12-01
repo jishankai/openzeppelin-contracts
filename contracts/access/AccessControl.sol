@@ -7,7 +7,7 @@ import "../utils/Context.sol";
 import "../utils/Strings.sol";
 import "../utils/introspection/ERC165.sol";
 
-/**
+/*
  * @dev Contract module that allows children to implement role-based access
  * control mechanisms. This is a lightweight version that doesn't allow enumerating role
  * members except through off-chain means by accessing the contract event logs. Some
@@ -55,7 +55,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
 
     bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
 
-    /**
+    /*
      * @dev Modifier that checks that an account has a specific role. Reverts
      * with a standardized message including the required role.
      *
@@ -70,21 +70,21 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         _;
     }
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IAccessControl).interfaceId || super.supportsInterface(interfaceId);
     }
 
-    /**
+    /*
      * @dev Returns `true` if `account` has been granted `role`.
      */
     function hasRole(bytes32 role, address account) public view override returns (bool) {
         return _roles[role].members[account];
     }
 
-    /**
+    /*
      * @dev Revert with a standard message if `account` is missing `role`.
      *
      * The format of the revert reason is given by the following regular expression:
@@ -106,7 +106,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         }
     }
 
-    /**
+    /*
      * @dev Returns the admin role that controls `role`. See {grantRole} and
      * {revokeRole}.
      *
@@ -116,7 +116,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         return _roles[role].adminRole;
     }
 
-    /**
+    /*
      * @dev Grants `role` to `account`.
      *
      * If `account` had not been already granted `role`, emits a {RoleGranted}
@@ -130,7 +130,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         _grantRole(role, account);
     }
 
-    /**
+    /*
      * @dev Revokes `role` from `account`.
      *
      * If `account` had been granted `role`, emits a {RoleRevoked} event.
@@ -143,7 +143,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         _revokeRole(role, account);
     }
 
-    /**
+    /*
      * @dev Revokes `role` from the calling account.
      *
      * Roles are often managed via {grantRole} and {revokeRole}: this function's
@@ -163,7 +163,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         _revokeRole(role, account);
     }
 
-    /**
+    /*
      * @dev Grants `role` to `account`.
      *
      * If `account` had not been already granted `role`, emits a {RoleGranted}
@@ -183,7 +183,7 @@ abstract contract AccessControl is Context, IAccessControl, ERC165 {
         _grantRole(role, account);
     }
 
-    /**
+    /*
      * @dev Sets `adminRole` as ``role``'s admin role.
      *
      * Emits a {RoleAdminChanged} event.

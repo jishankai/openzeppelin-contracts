@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../../utils/introspection/IERC165.sol";
 
-/**
+/*
  * https://eips.ethereum.org/EIPS/eip-214#specification
  * From the specification:
  * > Any attempts to make state-changing operations inside an execution instance with STATIC set to true will instead
@@ -20,12 +20,12 @@ contract SupportsInterfaceWithLookupMock is IERC165 {
      */
     bytes4 public constant INTERFACE_ID_ERC165 = 0x01ffc9a7;
 
-    /**
+    /*
      * @dev A mapping of interface id to whether or not it's supported.
      */
     mapping(bytes4 => bool) private _supportedInterfaces;
 
-    /**
+    /*
      * @dev A contract implementing SupportsInterfaceWithLookup
      * implement ERC165 itself.
      */
@@ -33,14 +33,14 @@ contract SupportsInterfaceWithLookupMock is IERC165 {
         _registerInterface(INTERFACE_ID_ERC165);
     }
 
-    /**
+    /*
      * @dev Implement supportsInterface(bytes4) using a lookup table.
      */
     function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
         return _supportedInterfaces[interfaceId];
     }
 
-    /**
+    /*
      * @dev Private method for registering an interface.
      */
     function _registerInterface(bytes4 interfaceId) internal {

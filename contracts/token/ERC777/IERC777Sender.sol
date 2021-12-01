@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Interface of the ERC777TokensSender standard as defined in the EIP.
  *
  * {IERC777} Token holders can be notified of operations performed on their
@@ -13,7 +13,7 @@ pragma solidity ^0.8.0;
  * See {IERC1820Registry} and {ERC1820Implementer}.
  */
 interface IERC777Sender {
-    /**
+    /*
      * @dev Called by an {IERC777} token contract whenever a registered holder's
      * (`from`) tokens are about to be moved or destroyed. The type of operation
      * is conveyed by `to` being the zero address or not.

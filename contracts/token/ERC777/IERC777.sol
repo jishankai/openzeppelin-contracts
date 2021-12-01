@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Interface of the ERC777Token standard as defined in the EIP.
  *
  * This contract uses the
@@ -12,18 +12,18 @@ pragma solidity ^0.8.0;
  * {ERC1820Implementer}.
  */
 interface IERC777 {
-    /**
+    /*
      * @dev Returns the name of the token.
      */
     function name() external view returns (string memory);
 
-    /**
+    /*
      * @dev Returns the symbol of the token, usually a shorter version of the
      * name.
      */
     function symbol() external view returns (string memory);
 
-    /**
+    /*
      * @dev Returns the smallest part of the token that is not divisible. This
      * means all token operations (creation, movement and destruction) must have
      * amounts that are a multiple of this number.
@@ -32,17 +32,17 @@ interface IERC777 {
      */
     function granularity() external view returns (uint256);
 
-    /**
+    /*
      * @dev Returns the amount of tokens in existence.
      */
     function totalSupply() external view returns (uint256);
 
-    /**
+    /*
      * @dev Returns the amount of tokens owned by an account (`owner`).
      */
     function balanceOf(address owner) external view returns (uint256);
 
-    /**
+    /*
      * @dev Moves `amount` tokens from the caller's account to `recipient`.
      *
      * If send or receive hooks are registered for the caller and `recipient`,
@@ -64,7 +64,7 @@ interface IERC777 {
         bytes calldata data
     ) external;
 
-    /**
+    /*
      * @dev Destroys `amount` tokens from the caller's account, reducing the
      * total supply.
      *
@@ -79,7 +79,7 @@ interface IERC777 {
      */
     function burn(uint256 amount, bytes calldata data) external;
 
-    /**
+    /*
      * @dev Returns true if an account is an operator of `tokenHolder`.
      * Operators can send and burn tokens on behalf of their owners. All
      * accounts are their own operator.
@@ -88,7 +88,7 @@ interface IERC777 {
      */
     function isOperatorFor(address operator, address tokenHolder) external view returns (bool);
 
-    /**
+    /*
      * @dev Make an account an operator of the caller.
      *
      * See {isOperatorFor}.
@@ -101,7 +101,7 @@ interface IERC777 {
      */
     function authorizeOperator(address operator) external;
 
-    /**
+    /*
      * @dev Revoke an account's operator status for the caller.
      *
      * See {isOperatorFor} and {defaultOperators}.
@@ -114,7 +114,7 @@ interface IERC777 {
      */
     function revokeOperator(address operator) external;
 
-    /**
+    /*
      * @dev Returns the list of default operators. These accounts are operators
      * for all token holders, even if {authorizeOperator} was never called on
      * them.
@@ -124,7 +124,7 @@ interface IERC777 {
      */
     function defaultOperators() external view returns (address[] memory);
 
-    /**
+    /*
      * @dev Moves `amount` tokens from `sender` to `recipient`. The caller must
      * be an operator of `sender`.
      *
@@ -151,7 +151,7 @@ interface IERC777 {
         bytes calldata operatorData
     ) external;
 
-    /**
+    /*
      * @dev Destroys `amount` tokens from `account`, reducing the total supply.
      * The caller must be an operator of `account`.
      *

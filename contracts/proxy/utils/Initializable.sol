@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed
  * behind a proxy. Since a proxied contract can't have a constructor, it's common to move constructor logic to an
  * external initializer function, usually called `initialize`. It then becomes necessary to protect this initializer
@@ -15,17 +15,17 @@ pragma solidity ^0.8.0;
  * that all initializers are idempotent. This is not verified automatically as constructors are by Solidity.
  */
 abstract contract Initializable {
-    /**
+    /*
      * @dev Indicates that the contract has been initialized.
      */
     bool private _initialized;
 
-    /**
+    /*
      * @dev Indicates that the contract is in the process of being initialized.
      */
     bool private _initializing;
 
-    /**
+    /*
      * @dev Modifier to protect an initializer function from being invoked twice.
      */
     modifier initializer() {

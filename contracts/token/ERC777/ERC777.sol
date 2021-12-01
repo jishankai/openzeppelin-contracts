@@ -10,7 +10,7 @@ import "../../utils/Address.sol";
 import "../../utils/Context.sol";
 import "../../utils/introspection/IERC1820Registry.sol";
 
-/**
+/*
  * @dev Implementation of the {IERC777} interface.
  *
  * This implementation is agnostic to the way tokens are created. This means
@@ -53,7 +53,7 @@ contract ERC777 is Context, IERC777, IERC20 {
     // ERC20-allowances
     mapping(address => mapping(address => uint256)) private _allowances;
 
-    /**
+    /*
      * @dev `defaultOperators` may be an empty array.
      */
     constructor(
@@ -74,21 +74,21 @@ contract ERC777 is Context, IERC777, IERC20 {
         _ERC1820_REGISTRY.setInterfaceImplementer(address(this), keccak256("ERC20Token"), address(this));
     }
 
-    /**
+    /*
      * @dev See {IERC777-name}.
      */
     function name() public view virtual override returns (string memory) {
         return _name;
     }
 
-    /**
+    /*
      * @dev See {IERC777-symbol}.
      */
     function symbol() public view virtual override returns (string memory) {
         return _symbol;
     }
 
-    /**
+    /*
      * @dev See {ERC20-decimals}.
      *
      * Always returns 18, as per the
@@ -98,7 +98,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         return 18;
     }
 
-    /**
+    /*
      * @dev See {IERC777-granularity}.
      *
      * This implementation always returns `1`.
@@ -107,21 +107,21 @@ contract ERC777 is Context, IERC777, IERC20 {
         return 1;
     }
 
-    /**
+    /*
      * @dev See {IERC777-totalSupply}.
      */
     function totalSupply() public view virtual override(IERC20, IERC777) returns (uint256) {
         return _totalSupply;
     }
 
-    /**
+    /*
      * @dev Returns the amount of tokens owned by an account (`tokenHolder`).
      */
     function balanceOf(address tokenHolder) public view virtual override(IERC20, IERC777) returns (uint256) {
         return _balances[tokenHolder];
     }
 
-    /**
+    /*
      * @dev See {IERC777-send}.
      *
      * Also emits a {IERC20-Transfer} event for ERC20 compatibility.
@@ -134,7 +134,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _send(_msgSender(), recipient, amount, data, "", true);
     }
 
-    /**
+    /*
      * @dev See {IERC20-transfer}.
      *
      * Unlike `send`, `recipient` is _not_ required to implement the {IERC777Recipient}
@@ -156,7 +156,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         return true;
     }
 
-    /**
+    /*
      * @dev See {IERC777-burn}.
      *
      * Also emits a {IERC20-Transfer} event for ERC20 compatibility.
@@ -165,7 +165,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _burn(_msgSender(), amount, data, "");
     }
 
-    /**
+    /*
      * @dev See {IERC777-isOperatorFor}.
      */
     function isOperatorFor(address operator, address tokenHolder) public view virtual override returns (bool) {
@@ -175,7 +175,7 @@ contract ERC777 is Context, IERC777, IERC20 {
             _operators[tokenHolder][operator];
     }
 
-    /**
+    /*
      * @dev See {IERC777-authorizeOperator}.
      */
     function authorizeOperator(address operator) public virtual override {
@@ -190,7 +190,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         emit AuthorizedOperator(operator, _msgSender());
     }
 
-    /**
+    /*
      * @dev See {IERC777-revokeOperator}.
      */
     function revokeOperator(address operator) public virtual override {
@@ -205,14 +205,14 @@ contract ERC777 is Context, IERC777, IERC20 {
         emit RevokedOperator(operator, _msgSender());
     }
 
-    /**
+    /*
      * @dev See {IERC777-defaultOperators}.
      */
     function defaultOperators() public view virtual override returns (address[] memory) {
         return _defaultOperatorsArray;
     }
 
-    /**
+    /*
      * @dev See {IERC777-operatorSend}.
      *
      * Emits {Sent} and {IERC20-Transfer} events.
@@ -228,7 +228,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _send(sender, recipient, amount, data, operatorData, true);
     }
 
-    /**
+    /*
      * @dev See {IERC777-operatorBurn}.
      *
      * Emits {Burned} and {IERC20-Transfer} events.
@@ -243,7 +243,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _burn(account, amount, data, operatorData);
     }
 
-    /**
+    /*
      * @dev See {IERC20-allowance}.
      *
      * Note that operator and allowance concepts are orthogonal: operators may
@@ -254,7 +254,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         return _allowances[holder][spender];
     }
 
-    /**
+    /*
      * @dev See {IERC20-approve}.
      *
      * Note that accounts cannot have allowance issued by their operators.
@@ -265,7 +265,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         return true;
     }
 
-    /**
+    /*
      * @dev See {IERC20-transferFrom}.
      *
      * Note that operator and allowance concepts are orthogonal: operators cannot
@@ -297,7 +297,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         return true;
     }
 
-    /**
+    /*
      * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
@@ -323,7 +323,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _mint(account, amount, userData, operatorData, true);
     }
 
-    /**
+    /*
      * @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
@@ -364,7 +364,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         emit Transfer(address(0), account, amount);
     }
 
-    /**
+    /*
      * @dev Send tokens
      * @param from address token holder address
      * @param to address recipient address
@@ -393,7 +393,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         _callTokensReceived(operator, from, to, amount, userData, operatorData, requireReceptionAck);
     }
 
-    /**
+    /*
      * @dev Burn tokens
      * @param from address token holder address
      * @param amount uint256 amount of tokens to burn
@@ -447,7 +447,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         emit Transfer(from, to, amount);
     }
 
-    /**
+    /*
      * @dev See {ERC20-_approve}.
      *
      * Note that accounts cannot have allowance issued by their operators.
@@ -464,7 +464,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         emit Approval(holder, spender, value);
     }
 
-    /**
+    /*
      * @dev Call from.tokensToSend() if the interface is registered
      * @param operator address operator requesting the transfer
      * @param from address token holder address
@@ -487,7 +487,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         }
     }
 
-    /**
+    /*
      * @dev Call to.tokensReceived() if the interface is registered. Reverts if the recipient is a contract but
      * tokensReceived() was not registered for the recipient
      * @param operator address operator requesting the transfer
@@ -515,7 +515,7 @@ contract ERC777 is Context, IERC777, IERC20 {
         }
     }
 
-    /**
+    /*
      * @dev Hook that is called before any token transfer. This includes
      * calls to {send}, {transfer}, {operatorSend}, minting and burning.
      *

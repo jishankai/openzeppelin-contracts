@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../ERC1155.sol";
 import "../../../security/Pausable.sol";
 
-/**
+/*
  * @dev ERC1155 token with pausable token transfers, minting and burning.
  *
  * Useful for scenarios such as preventing trades until the end of an evaluation
@@ -15,7 +15,7 @@ import "../../../security/Pausable.sol";
  * _Available since v3.1._
  */
 abstract contract ERC1155Pausable is ERC1155, Pausable {
-    /**
+    /*
      * @dev See {ERC1155-_beforeTokenTransfer}.
      *
      * Requirements:

@@ -15,7 +15,7 @@ import "../proxy/utils/Initializable.sol";
 //      |         |
 //      -- Child --
 
-/**
+/*
  * Sample base intializable contract that is a human
  */
 contract SampleHuman is Initializable {
@@ -26,7 +26,7 @@ contract SampleHuman is Initializable {
     }
 }
 
-/**
+/*
  * Sample base intializable contract that defines a field mother
  */
 contract SampleMother is Initializable, SampleHuman {
@@ -38,7 +38,7 @@ contract SampleMother is Initializable, SampleHuman {
     }
 }
 
-/**
+/*
  * Sample base intializable contract that defines a field gramps
  */
 contract SampleGramps is Initializable, SampleHuman {
@@ -50,7 +50,7 @@ contract SampleGramps is Initializable, SampleHuman {
     }
 }
 
-/**
+/*
  * Sample base intializable contract that defines a field father and extends from gramps
  */
 contract SampleFather is Initializable, SampleGramps {
@@ -62,7 +62,7 @@ contract SampleFather is Initializable, SampleGramps {
     }
 }
 
-/**
+/*
  * Child extends from mother, father (gramps)
  */
 contract SampleChild is Initializable, SampleMother, SampleFather {

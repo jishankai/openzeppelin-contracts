@@ -9,7 +9,7 @@ import "../extensions/GovernorProposalThreshold.sol";
 import "../Governor.sol";
 import "./IGovernorCompatibilityBravo.sol";
 
-/**
+/*
  * @dev Compatibility layer that implements GovernorBravo compatibility on to of {Governor}.
  *
  * This compatibility layer includes a voting system and requires a {IGovernorTimelock} compatible module to be added
@@ -53,7 +53,7 @@ abstract contract GovernorCompatibilityBravo is
     }
 
     // ============================================== Proposal lifecycle ==============================================
-    /**
+    /*
      * @dev See {IGovernor-propose}.
      */
     function propose(
@@ -66,7 +66,7 @@ abstract contract GovernorCompatibilityBravo is
         return super.propose(targets, values, calldatas, description);
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-propose}.
      */
     function propose(
@@ -80,7 +80,7 @@ abstract contract GovernorCompatibilityBravo is
         return propose(targets, values, _encodeCalldata(signatures, calldatas), description);
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-queue}.
      */
     function queue(uint256 proposalId) public virtual override {
@@ -93,7 +93,7 @@ abstract contract GovernorCompatibilityBravo is
         );
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-execute}.
      */
     function execute(uint256 proposalId) public payable virtual override {
@@ -122,7 +122,7 @@ abstract contract GovernorCompatibilityBravo is
         );
     }
 
-    /**
+    /*
      * @dev Encodes calldatas with optional function signature.
      */
     function _encodeCalldata(string[] memory signatures, bytes[] memory calldatas)
@@ -141,7 +141,7 @@ abstract contract GovernorCompatibilityBravo is
         return fullcalldatas;
     }
 
-    /**
+    /*
      * @dev Store proposal metadata for later lookup
      */
     function _storeProposal(
@@ -167,7 +167,7 @@ abstract contract GovernorCompatibilityBravo is
     }
 
     // ==================================================== Views =====================================================
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"The number of votes required in order for a voter to become a proposer"_.
      */
     function proposalThreshold()
@@ -177,7 +177,7 @@ abstract contract GovernorCompatibilityBravo is
         override(IGovernorCompatibilityBravo, GovernorProposalThreshold)
         returns (uint256);
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-proposals}.
      */
     function proposals(uint256 proposalId)
@@ -214,7 +214,7 @@ abstract contract GovernorCompatibilityBravo is
         executed = status == ProposalState.Executed;
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-getActions}.
      */
     function getActions(uint256 proposalId)
@@ -233,14 +233,14 @@ abstract contract GovernorCompatibilityBravo is
         return (details.targets, details.values, details.signatures, details.calldatas);
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-getReceipt}.
      */
     function getReceipt(uint256 proposalId, address voter) public view virtual override returns (Receipt memory) {
         return _proposalDetails[proposalId].receipts[voter];
     }
 
-    /**
+    /*
      * @dev See {IGovernorCompatibilityBravo-quorumVotes}.
      */
     function quorumVotes() public view virtual override returns (uint256) {
@@ -248,14 +248,14 @@ abstract contract GovernorCompatibilityBravo is
     }
 
     // ==================================================== Voting ====================================================
-    /**
+    /*
      * @dev See {IGovernor-hasVoted}.
      */
     function hasVoted(uint256 proposalId, address account) public view virtual override returns (bool) {
         return _proposalDetails[proposalId].receipts[account].hasVoted;
     }
 
-    /**
+    /*
      * @dev See {Governor-_quorumReached}. In this module, only forVotes count toward the quorum.
      */
     function _quorumReached(uint256 proposalId) internal view virtual override returns (bool) {
@@ -263,7 +263,7 @@ abstract contract GovernorCompatibilityBravo is
         return quorum(proposalSnapshot(proposalId)) < details.forVotes;
     }
 
-    /**
+    /*
      * @dev See {Governor-_voteSucceeded}. In this module, the forVotes must be scritly over the againstVotes.
      */
     function _voteSucceeded(uint256 proposalId) internal view virtual override returns (bool) {
@@ -271,7 +271,7 @@ abstract contract GovernorCompatibilityBravo is
         return details.forVotes > details.againstVotes;
     }
 
-    /**
+    /*
      * @dev See {Governor-_countVote}. In this module, the support follows Governor Bravo.
      */
     function _countVote(

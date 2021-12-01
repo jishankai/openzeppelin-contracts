@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Interface of the ERC777TokensRecipient standard as defined in the EIP.
  *
  * Accounts can be notified of {IERC777} tokens being sent to them by having a
@@ -13,7 +13,7 @@ pragma solidity ^0.8.0;
  * See {IERC1820Registry} and {ERC1820Implementer}.
  */
 interface IERC777Recipient {
-    /**
+    /*
      * @dev Called by an {IERC777} token contract whenever tokens are being
      * moved or created into a registered account (`to`). The type of operation
      * is conveyed by `from` being the zero address or not.

@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Elliptic Curve Digital Signature Algorithm (ECDSA) operations.
  *
  * These functions can be used to verify that a message was signed by the holder
@@ -31,7 +31,7 @@ library ECDSA {
         }
     }
 
-    /**
+    /*
      * @dev Returns the address that signed a hashed message (`hash`) with
      * `signature` or error string. This address can then be used for verification purposes.
      *
@@ -82,7 +82,7 @@ library ECDSA {
         }
     }
 
-    /**
+    /*
      * @dev Returns the address that signed a hashed message (`hash`) with
      * `signature`. This address can then be used for verification purposes.
      *
@@ -102,7 +102,7 @@ library ECDSA {
         return recovered;
     }
 
-    /**
+    /*
      * @dev Overload of {ECDSA-tryRecover} that receives the `r` and `vs` short-signature fields separately.
      *
      * See https://eips.ethereum.org/EIPS/eip-2098[EIP-2098 short signatures]
@@ -123,7 +123,7 @@ library ECDSA {
         return tryRecover(hash, v, r, s);
     }
 
-    /**
+    /*
      * @dev Overload of {ECDSA-recover} that receives the `r and `vs` short-signature fields separately.
      *
      * _Available since v4.2._
@@ -138,7 +138,7 @@ library ECDSA {
         return recovered;
     }
 
-    /**
+    /*
      * @dev Overload of {ECDSA-tryRecover} that receives the `v`,
      * `r` and `s` signature fields separately.
      *
@@ -175,7 +175,7 @@ library ECDSA {
         return (signer, RecoverError.NoError);
     }
 
-    /**
+    /*
      * @dev Overload of {ECDSA-recover} that receives the `v`,
      * `r` and `s` signature fields separately.
      */
@@ -190,7 +190,7 @@ library ECDSA {
         return recovered;
     }
 
-    /**
+    /*
      * @dev Returns an Ethereum Signed Message, created from a `hash`. This
      * produces hash corresponding to the one signed with the
      * https://eth.wiki/json-rpc/API#eth_sign[`eth_sign`]
@@ -204,7 +204,7 @@ library ECDSA {
         return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
     }
 
-    /**
+    /*
      * @dev Returns an Ethereum Signed Typed Data, created from a
      * `domainSeparator` and a `structHash`. This produces hash corresponding
      * to the one signed with the

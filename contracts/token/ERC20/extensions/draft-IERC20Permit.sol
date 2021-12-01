@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Interface of the ERC20 Permit extension allowing approvals to be made via signatures, as defined in
  * https://eips.ethereum.org/EIPS/eip-2612[EIP-2612].
  *
@@ -11,7 +11,7 @@ pragma solidity ^0.8.0;
  * need to send a transaction, and thus is not required to hold Ether at all.
  */
 interface IERC20Permit {
-    /**
+    /*
      * @dev Sets `value` as the allowance of `spender` over ``owner``'s tokens,
      * given ``owner``'s signed approval.
      *
@@ -42,7 +42,7 @@ interface IERC20Permit {
         bytes32 s
     ) external;
 
-    /**
+    /*
      * @dev Returns the current nonce for `owner`. This value must be
      * included whenever a signature is generated for {permit}.
      *
@@ -51,7 +51,7 @@ interface IERC20Permit {
      */
     function nonces(address owner) external view returns (uint256);
 
-    /**
+    /*
      * @dev Returns the domain separator used in the encoding of the signature for {permit}, as defined by {EIP712}.
      */
     // solhint-disable-next-line func-name-mixedcase

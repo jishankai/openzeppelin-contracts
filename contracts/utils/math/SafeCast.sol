@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Wrappers over Solidity's uintXX/intXX casting operators with added overflow
  * checks.
  *
@@ -18,7 +18,7 @@ pragma solidity ^0.8.0;
  * all math on `uint256` and `int256` and then downcasting.
  */
 library SafeCast {
-    /**
+    /*
      * @dev Returns the downcasted uint224 from uint256, reverting on
      * overflow (when the input is greater than largest uint224).
      *
@@ -33,7 +33,7 @@ library SafeCast {
         return uint224(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint128 from uint256, reverting on
      * overflow (when the input is greater than largest uint128).
      *
@@ -48,7 +48,7 @@ library SafeCast {
         return uint128(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint96 from uint256, reverting on
      * overflow (when the input is greater than largest uint96).
      *
@@ -63,7 +63,7 @@ library SafeCast {
         return uint96(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint64 from uint256, reverting on
      * overflow (when the input is greater than largest uint64).
      *
@@ -78,7 +78,7 @@ library SafeCast {
         return uint64(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint32 from uint256, reverting on
      * overflow (when the input is greater than largest uint32).
      *
@@ -93,7 +93,7 @@ library SafeCast {
         return uint32(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint16 from uint256, reverting on
      * overflow (when the input is greater than largest uint16).
      *
@@ -108,7 +108,7 @@ library SafeCast {
         return uint16(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted uint8 from uint256, reverting on
      * overflow (when the input is greater than largest uint8).
      *
@@ -123,7 +123,7 @@ library SafeCast {
         return uint8(value);
     }
 
-    /**
+    /*
      * @dev Converts a signed int256 into an unsigned uint256.
      *
      * Requirements:
@@ -135,7 +135,7 @@ library SafeCast {
         return uint256(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted int128 from int256, reverting on
      * overflow (when the input is less than smallest int128 or
      * greater than largest int128).
@@ -153,7 +153,7 @@ library SafeCast {
         return int128(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted int64 from int256, reverting on
      * overflow (when the input is less than smallest int64 or
      * greater than largest int64).
@@ -171,7 +171,7 @@ library SafeCast {
         return int64(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted int32 from int256, reverting on
      * overflow (when the input is less than smallest int32 or
      * greater than largest int32).
@@ -189,7 +189,7 @@ library SafeCast {
         return int32(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted int16 from int256, reverting on
      * overflow (when the input is less than smallest int16 or
      * greater than largest int16).
@@ -207,7 +207,7 @@ library SafeCast {
         return int16(value);
     }
 
-    /**
+    /*
      * @dev Returns the downcasted int8 from int256, reverting on
      * overflow (when the input is less than smallest int8 or
      * greater than largest int8).
@@ -225,7 +225,7 @@ library SafeCast {
         return int8(value);
     }
 
-    /**
+    /*
      * @dev Converts an unsigned uint256 into a signed int256.
      *
      * Requirements:

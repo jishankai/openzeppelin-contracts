@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev These functions deal with verification of Merkle Trees proofs.
  *
  * The proofs can be generated using the JavaScript library
@@ -12,7 +12,7 @@ pragma solidity ^0.8.0;
  * See `test/utils/cryptography/MerkleProof.test.js` for some examples.
  */
 library MerkleProof {
-    /**
+    /*
      * @dev Returns true if a `leaf` can be proved to be a part of a Merkle tree
      * defined by `root`. For this, a `proof` must be provided, containing
      * sibling hashes on the branch from the leaf to the root of the tree. Each

@@ -6,7 +6,7 @@ import "./IGovernorTimelock.sol";
 import "../Governor.sol";
 import "../../utils/math/SafeCast.sol";
 
-/**
+/*
  * https://github.com/compound-finance/compound-protocol/blob/master/contracts/Timelock.sol[Compound's timelock] interface
  */
 interface ICompoundTimelock {
@@ -60,7 +60,7 @@ interface ICompoundTimelock {
     ) external payable returns (bytes memory);
 }
 
-/**
+/*
  * @dev Extension of {Governor} that binds the execution process to a Compound Timelock. This adds a delay, enforced by
  * the external timelock to all successful proposal (in addition to the voting duration). The {Governor} needs to be
  * the admin of the timelock for any operation to be performed. A public, unrestricted,
@@ -84,26 +84,26 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
 
     mapping(uint256 => ProposalTimelock) private _proposalTimelocks;
 
-    /**
+    /*
      * @dev Emitted when the timelock controller used for proposal execution is modified.
      */
     event TimelockChange(address oldTimelock, address newTimelock);
 
-    /**
+    /*
      * @dev Set the timelock.
      */
     constructor(ICompoundTimelock timelockAddress) {
         _updateTimelock(timelockAddress);
     }
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, Governor) returns (bool) {
         return interfaceId == type(IGovernorTimelock).interfaceId || super.supportsInterface(interfaceId);
     }
 
-    /**
+    /*
      * @dev Overriden version of the {Governor-state} function with added support for the `Queued` and `Expired` status.
      */
     function state(uint256 proposalId) public view virtual override(IGovernor, Governor) returns (ProposalState) {
@@ -123,21 +123,21 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
         }
     }
 
-    /**
+    /*
      * @dev Public accessor to check the address of the timelock
      */
     function timelock() public view virtual override returns (address) {
         return address(_timelock);
     }
 
-    /**
+    /*
      * @dev Public accessor to check the eta of a queued proposal
      */
     function proposalEta(uint256 proposalId) public view virtual override returns (uint256) {
         return _proposalTimelocks[proposalId].timer.getDeadline();
     }
 
-    /**
+    /*
      * @dev Function to queue a proposal to the timelock.
      */
     function queue(
@@ -165,7 +165,7 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
         return proposalId;
     }
 
-    /**
+    /*
      * @dev Overriden execute function that run the already queued proposal through the timelock.
      */
     function _execute(
@@ -182,7 +182,7 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
         }
     }
 
-    /**
+    /*
      * @dev Overriden version of the {Governor-_cancel} function to cancel the timelocked proposal if it as already
      * been queued.
      */
@@ -205,14 +205,14 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
         return proposalId;
     }
 
-    /**
+    /*
      * @dev Address through which the governor executes action. In this case, the timelock.
      */
     function _executor() internal view virtual override returns (address) {
         return address(_timelock);
     }
 
-    /**
+    /*
      * @dev Accept admin right over the timelock.
      */
     // solhint-disable-next-line private-vars-leading-underscore
@@ -220,7 +220,7 @@ abstract contract GovernorTimelockCompound is IGovernorTimelock, Governor {
         _timelock.acceptAdmin();
     }
 
-    /**
+    /*
      * @dev Public endpoint to update the underlying timelock instance. Restricted to the timelock itself, so updates
      * must be proposed, scheduled and executed using the {Governor} workflow.
      *

@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../proxy/utils/Initializable.sol";
 
-/**
+/*
  * @title InitializableMock
  * @dev This contract is a mock to test initializable functionality
  */

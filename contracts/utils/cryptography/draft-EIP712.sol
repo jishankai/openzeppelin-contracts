@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./ECDSA.sol";
 
-/**
+/*
  * @dev https://eips.ethereum.org/EIPS/eip-712[EIP 712] is a standard for hashing and signing of typed structured data.
  *
  * The encoding specified in the EIP is very generic, and such a generic implementation in Solidity is not feasible,
@@ -36,7 +36,7 @@ abstract contract EIP712 {
 
     /* solhint-enable var-name-mixedcase */
 
-    /**
+    /*
      * @dev Initializes the domain separator and parameter caches.
      *
      * The meaning of `name` and `version` is specified in
@@ -61,7 +61,7 @@ abstract contract EIP712 {
         _TYPE_HASH = typeHash;
     }
 
-    /**
+    /*
      * @dev Returns the domain separator for the current chain.
      */
     function _domainSeparatorV4() internal view returns (bytes32) {
@@ -80,7 +80,7 @@ abstract contract EIP712 {
         return keccak256(abi.encode(typeHash, nameHash, versionHash, block.chainid, address(this)));
     }
 
-    /**
+    /*
      * @dev Given an already https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct[hashed struct], this
      * function returns the hash of the fully encoded EIP712 message for this domain.
      *

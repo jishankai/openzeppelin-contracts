@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./IERC165.sol";
 
-/**
+/*
  * @dev Library used to query support of an interface declared via {IERC165}.
  *
  * Note that these functions return the actual result of the query: they do not
@@ -15,7 +15,7 @@ library ERC165Checker {
     // As per the EIP-165 spec, no interface should ever match 0xffffffff
     bytes4 private constant _INTERFACE_ID_INVALID = 0xffffffff;
 
-    /**
+    /*
      * @dev Returns true if `account` supports the {IERC165} interface,
      */
     function supportsERC165(address account) internal view returns (bool) {
@@ -26,7 +26,7 @@ library ERC165Checker {
             !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
     }
 
-    /**
+    /*
      * @dev Returns true if `account` supports the interface defined by
      * `interfaceId`. Support for {IERC165} itself is queried automatically.
      *
@@ -37,7 +37,7 @@ library ERC165Checker {
         return supportsERC165(account) && _supportsERC165Interface(account, interfaceId);
     }
 
-    /**
+    /*
      * @dev Returns a boolean array where each value corresponds to the
      * interfaces passed in and whether they're supported or not. This allows
      * you to batch check interfaces for a contract where your expectation
@@ -66,7 +66,7 @@ library ERC165Checker {
         return interfaceIdsSupported;
     }
 
-    /**
+    /*
      * @dev Returns true if `account` supports all the interfaces defined in
      * `interfaceIds`. Support for {IERC165} itself is queried automatically.
      *
@@ -92,7 +92,7 @@ library ERC165Checker {
         return true;
     }
 
-    /**
+    /*
      * @notice Query if a contract implements an interface, does not check ERC165 support
      * @param account The address of the contract to query for support of an interface
      * @param interfaceId The interface identifier, as specified in ERC-165

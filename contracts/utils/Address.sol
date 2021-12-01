@@ -2,11 +2,11 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Collection of functions related to the address type
  */
 library Address {
-    /**
+    /*
      * @dev Returns true if `account` is a contract.
      *
      * [IMPORTANT]
@@ -35,7 +35,7 @@ library Address {
         return size > 0;
     }
 
-    /**
+    /*
      * @dev Replacement for Solidity's `transfer`: sends `amount` wei to
      * `recipient`, forwarding all available gas and reverting on errors.
      *
@@ -58,7 +58,7 @@ library Address {
         require(success, "Address: unable to send value, recipient may have reverted");
     }
 
-    /**
+    /*
      * @dev Performs a Solidity function call using a low level `call`. A
      * plain `call` is an unsafe replacement for a function call: use this
      * function instead.
@@ -80,7 +80,7 @@ library Address {
         return functionCall(target, data, "Address: low-level call failed");
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`], but with
      * `errorMessage` as a fallback revert reason when `target` reverts.
      *
@@ -94,7 +94,7 @@ library Address {
         return functionCallWithValue(target, data, 0, errorMessage);
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],
      * but also transferring `value` wei to `target`.
      *
@@ -113,7 +113,7 @@ library Address {
         return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCallWithValue-address-bytes-uint256-}[`functionCallWithValue`], but
      * with `errorMessage` as a fallback revert reason when `target` reverts.
      *
@@ -132,7 +132,7 @@ library Address {
         return verifyCallResult(success, returndata, errorMessage);
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],
      * but performing a static call.
      *
@@ -142,7 +142,7 @@ library Address {
         return functionStaticCall(target, data, "Address: low-level static call failed");
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],
      * but performing a static call.
      *
@@ -159,7 +159,7 @@ library Address {
         return verifyCallResult(success, returndata, errorMessage);
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],
      * but performing a delegate call.
      *
@@ -169,7 +169,7 @@ library Address {
         return functionDelegateCall(target, data, "Address: low-level delegate call failed");
     }
 
-    /**
+    /*
      * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],
      * but performing a delegate call.
      *
@@ -186,7 +186,7 @@ library Address {
         return verifyCallResult(success, returndata, errorMessage);
     }
 
-    /**
+    /*
      * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the
      * revert reason using the provided one.
      *

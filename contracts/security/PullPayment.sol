@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../utils/escrow/Escrow.sol";
 
-/**
+/*
  * @dev Simple implementation of a
  * https://consensys.github.io/smart-contract-best-practices/recommendations/#favor-pull-over-push-for-external-calls[pull-payment]
  * strategy, where the paying contract doesn't interact directly with the
@@ -29,7 +29,7 @@ abstract contract PullPayment {
         _escrow = new Escrow();
     }
 
-    /**
+    /*
      * @dev Withdraw accumulated payments, forwarding all gas to the recipient.
      *
      * Note that _any_ account can call this function, not just the `payee`.
@@ -47,7 +47,7 @@ abstract contract PullPayment {
         _escrow.withdraw(payee);
     }
 
-    /**
+    /*
      * @dev Returns the payments owed to an address.
      * @param dest The creditor's address.
      */
@@ -55,7 +55,7 @@ abstract contract PullPayment {
         return _escrow.depositsOf(dest);
     }
 
-    /**
+    /*
      * @dev Called by the payer to store the sent amount as credit to be pulled.
      * Funds sent in this way are stored in an intermediate {Escrow} contract, so
      * there is no danger of them being spent before withdrawal.

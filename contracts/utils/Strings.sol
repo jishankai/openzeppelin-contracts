@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev String operations.
  */
 library Strings {
     bytes16 private constant _HEX_SYMBOLS = "0123456789abcdef";
 
-    /**
+    /*
      * @dev Converts a `uint256` to its ASCII `string` decimal representation.
      */
     function toString(uint256 value) internal pure returns (string memory) {
@@ -33,7 +33,7 @@ library Strings {
         return string(buffer);
     }
 
-    /**
+    /*
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.
      */
     function toHexString(uint256 value) internal pure returns (string memory) {
@@ -49,7 +49,7 @@ library Strings {
         return toHexString(value, length);
     }
 
-    /**
+    /*
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.
      */
     function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {

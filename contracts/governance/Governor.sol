@@ -11,7 +11,7 @@ import "../utils/Context.sol";
 import "../utils/Timers.sol";
 import "./IGovernor.sol";
 
-/**
+/*
  * @dev Core of the governance system, designed to be extended though various modules.
  *
  * This contract is abstract and requires several function to be implemented in various modules:
@@ -39,7 +39,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
 
     mapping(uint256 => ProposalCore) private _proposals;
 
-    /**
+    /*
      * @dev Restrict access to governor executing address. Some module might override the _executor function to make
      * sure this modifier is consistant with the execution model.
      */
@@ -48,35 +48,35 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         _;
     }
 
-    /**
+    /*
      * @dev Sets the value for {name} and {version}
      */
     constructor(string memory name_) EIP712(name_, version()) {
         _name = name_;
     }
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC165) returns (bool) {
         return interfaceId == type(IGovernor).interfaceId || super.supportsInterface(interfaceId);
     }
 
-    /**
+    /*
      * @dev See {IGovernor-name}.
      */
     function name() public view virtual override returns (string memory) {
         return _name;
     }
 
-    /**
+    /*
      * @dev See {IGovernor-version}.
      */
     function version() public view virtual override returns (string memory) {
         return "1";
     }
 
-    /**
+    /*
      * @dev See {IGovernor-hashProposal}.
      *
      * The proposal id is produced by hashing the RLC encoded `targets` array, the `values` array, the `calldatas` array
@@ -98,7 +98,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return uint256(keccak256(abi.encode(targets, values, calldatas, descriptionHash)));
     }
 
-    /**
+    /*
      * @dev See {IGovernor-state}.
      */
     function state(uint256 proposalId) public view virtual override returns (ProposalState) {
@@ -122,31 +122,31 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         }
     }
 
-    /**
+    /*
      * @dev See {IGovernor-proposalSnapshot}.
      */
     function proposalSnapshot(uint256 proposalId) public view virtual override returns (uint256) {
         return _proposals[proposalId].voteStart.getDeadline();
     }
 
-    /**
+    /*
      * @dev See {IGovernor-proposalDeadline}.
      */
     function proposalDeadline(uint256 proposalId) public view virtual override returns (uint256) {
         return _proposals[proposalId].voteEnd.getDeadline();
     }
 
-    /**
+    /*
      * @dev Amount of votes already cast passes the threshold limit.
      */
     function _quorumReached(uint256 proposalId) internal view virtual returns (bool);
 
-    /**
+    /*
      * @dev Is the proposal successful or not.
      */
     function _voteSucceeded(uint256 proposalId) internal view virtual returns (bool);
 
-    /**
+    /*
      * @dev Register a vote with a given support and voting weight.
      *
      * Note: Support is generic and can represent various things depending on the voting system used.
@@ -158,7 +158,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         uint256 weight
     ) internal virtual;
 
-    /**
+    /*
      * @dev See {IGovernor-propose}.
      */
     function propose(
@@ -197,7 +197,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return proposalId;
     }
 
-    /**
+    /*
      * @dev See {IGovernor-execute}.
      */
     function execute(
@@ -222,7 +222,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return proposalId;
     }
 
-    /**
+    /*
      * @dev Internal execution mechanism. Can be overriden to implement different execution mechanism
      */
     function _execute(
@@ -239,7 +239,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         }
     }
 
-    /**
+    /*
      * @dev Internal cancel mechanism: locks up the proposal timer, preventing it from being re-submitted. Marks it as
      * canceled to allow distinguishing it from executed proposals.
      *
@@ -265,7 +265,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return proposalId;
     }
 
-    /**
+    /*
      * @dev See {IGovernor-castVote}.
      */
     function castVote(uint256 proposalId, uint8 support) public virtual override returns (uint256) {
@@ -273,7 +273,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return _castVote(proposalId, voter, support, "");
     }
 
-    /**
+    /*
      * @dev See {IGovernor-castVoteWithReason}.
      */
     function castVoteWithReason(
@@ -285,7 +285,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return _castVote(proposalId, voter, support, reason);
     }
 
-    /**
+    /*
      * @dev See {IGovernor-castVoteBySig}.
      */
     function castVoteBySig(
@@ -304,7 +304,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return _castVote(proposalId, voter, support, "");
     }
 
-    /**
+    /*
      * @dev Internal vote casting mechanism: Check that the vote is pending, that it has not been cast yet, retrieve
      * voting weight using {IGovernor-getVotes} and call the {_countVote} internal function.
      *
@@ -327,7 +327,7 @@ abstract contract Governor is Context, ERC165, EIP712, IGovernor {
         return weight;
     }
 
-    /**
+    /*
      * @dev Address through which the governor executes action. Will be overloaded by module that execute actions
      * through another contract such as a timelock.
      */

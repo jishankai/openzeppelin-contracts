@@ -8,7 +8,7 @@ interface IERC1363Receiver {
      * 0x88a7ca5c === bytes4(keccak256("onTransferReceived(address,address,uint256,bytes)"))
      */
 
-    /**
+    /*
      * @notice Handle the receipt of ERC1363 tokens
      * @dev Any ERC1363 smart contract calls this function on the recipient
      * after a `transfer` or a `transferFrom`. This function MAY throw to revert and reject the

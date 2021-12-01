@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./IERC1820Implementer.sol";
 
-/**
+/*
  * @dev Implementation of the {IERC1820Implementer} interface.
  *
  * Contracts may inherit from this and call {_registerInterfaceForAddress} to
@@ -17,7 +17,7 @@ contract ERC1820Implementer is IERC1820Implementer {
 
     mapping(bytes32 => mapping(address => bool)) private _supportedInterfaces;
 
-    /**
+    /*
      * @dev See {IERC1820Implementer-canImplementInterfaceForAddress}.
      */
     function canImplementInterfaceForAddress(bytes32 interfaceHash, address account)
@@ -30,7 +30,7 @@ contract ERC1820Implementer is IERC1820Implementer {
         return _supportedInterfaces[interfaceHash][account] ? _ERC1820_ACCEPT_MAGIC : bytes32(0x00);
     }
 
-    /**
+    /*
      * @dev Declares the contract as willing to be an implementer of
      * `interfaceHash` for `account`.
      *

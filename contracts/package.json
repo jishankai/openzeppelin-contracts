@@ -5,7 +5,7 @@
   "files": [
     "**/*.sol",
     "/build/contracts/*.json",
-    "!/mocks/**/*"
+    "!/mocks/*/*"
   ],
   "scripts": {
     "prepare": "bash ../scripts/prepare-contracts-package.sh",

@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Helper to make usage of the `CREATE2` EVM opcode easier and safer.
  * `CREATE2` can be used to compute in advance the address where a smart
  * contract will be deployed, which allows for interesting new mechanisms known
@@ -12,7 +12,7 @@ pragma solidity ^0.8.0;
  * information.
  */
 library Create2 {
-    /**
+    /*
      * @dev Deploys a contract using `CREATE2`. The address where the contract
      * will be deployed can be known in advance via {computeAddress}.
      *
@@ -41,7 +41,7 @@ library Create2 {
         return addr;
     }
 
-    /**
+    /*
      * @dev Returns the address where a contract will be stored if deployed via {deploy}. Any change in the
      * `bytecodeHash` or `salt` will result in a new destination address.
      */
@@ -49,7 +49,7 @@ library Create2 {
         return computeAddress(salt, bytecodeHash, address(this));
     }
 
-    /**
+    /*
      * @dev Returns the address where a contract will be stored if deployed via {deploy} from a contract located at
      * `deployer`. If `deployer` is this contract's address, returns the same value as {computeAddress}.
      */

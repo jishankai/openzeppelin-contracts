@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: BSD-3-Clause
 // solhint-disable private-vars-leading-underscore
-/**
+/*
  * Copyright 2020 Compound Labs, Inc.
  *
  * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the

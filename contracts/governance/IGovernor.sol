@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../utils/introspection/ERC165.sol";
 
-/**
+/*
  * @dev Interface of the {Governor} core.
  *
  * _Available since v4.3._
@@ -21,7 +21,7 @@ abstract contract IGovernor is IERC165 {
         Executed
     }
 
-    /**
+    /*
      * @dev Emitted when a proposal is created.
      */
     event ProposalCreated(
@@ -36,36 +36,36 @@ abstract contract IGovernor is IERC165 {
         string description
     );
 
-    /**
+    /*
      * @dev Emitted when a proposal is canceled.
      */
     event ProposalCanceled(uint256 proposalId);
 
-    /**
+    /*
      * @dev Emitted when a proposal is executed.
      */
     event ProposalExecuted(uint256 proposalId);
 
-    /**
+    /*
      * @dev Emitted when a vote is cast.
      *
      * Note: `support` values should be seen as buckets. There interpretation depends on the voting module used.
      */
     event VoteCast(address indexed voter, uint256 proposalId, uint8 support, uint256 weight, string reason);
 
-    /**
+    /*
      * @notice module:core
      * @dev Name of the governor instance (used in building the ERC712 domain separator).
      */
     function name() public view virtual returns (string memory);
 
-    /**
+    /*
      * @notice module:core
      * @dev Version of the governor instance (used in building the ERC712 domain separator). Default: "1"
      */
     function version() public view virtual returns (string memory);
 
-    /**
+    /*
      * @notice module:voting
      * @dev A description of the possible `support` values for {castVote} and the way these votes are counted, meant to
      * be consumed by UIs to show correct vote options and interpret the results. The string is a URL-encoded sequence of
@@ -84,7 +84,7 @@ abstract contract IGovernor is IERC165 {
     // solhint-disable-next-line func-name-mixedcase
     function COUNTING_MODE() public pure virtual returns (string memory);
 
-    /**
+    /*
      * @notice module:core
      * @dev Hashing function used to (re)build the proposal id from the proposal details..
      */
@@ -95,32 +95,32 @@ abstract contract IGovernor is IERC165 {
         bytes32 descriptionHash
     ) public pure virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:core
      * @dev Current state of a proposal, following Compound's convention
      */
     function state(uint256 proposalId) public view virtual returns (ProposalState);
 
-    /**
+    /*
      * @notice module:core
      * @dev block number used to retrieve user's votes and quorum.
      */
     function proposalSnapshot(uint256 proposalId) public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:core
      * @dev timestamp at which votes close.
      */
     function proposalDeadline(uint256 proposalId) public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:user-config
      * @dev delay, in number of block, between the proposal is created and the vote starts. This can be increassed to
      * leave time for users to buy voting power, of delegate it, before the voting of a proposal starts.
      */
     function votingDelay() public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:user-config
      * @dev delay, in number of blocks, between the vote start and vote ends.
      *
@@ -129,7 +129,7 @@ abstract contract IGovernor is IERC165 {
      */
     function votingPeriod() public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:user-config
      * @dev Minimum number of cast voted required for a proposal to be successful.
      *
@@ -138,7 +138,7 @@ abstract contract IGovernor is IERC165 {
      */
     function quorum(uint256 blockNumber) public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:reputation
      * @dev Voting power of an `account` at a specific `blockNumber`.
      *
@@ -147,13 +147,13 @@ abstract contract IGovernor is IERC165 {
      */
     function getVotes(address account, uint256 blockNumber) public view virtual returns (uint256);
 
-    /**
+    /*
      * @notice module:voting
      * @dev Returns weither `account` has cast a vote on `proposalId`.
      */
     function hasVoted(uint256 proposalId, address account) public view virtual returns (bool);
 
-    /**
+    /*
      * @dev Create a new proposal. Vote start {IGovernor-votingDelay} blocks after the proposal is created and ends
      * {IGovernor-votingPeriod} blocks after the voting starts.
      *
@@ -166,7 +166,7 @@ abstract contract IGovernor is IERC165 {
         string memory description
     ) public virtual returns (uint256 proposalId);
 
-    /**
+    /*
      * @dev Execute a successful proposal. This requires the quorum to be reached, the vote to be successful, and the
      * deadline to be reached.
      *
@@ -181,14 +181,14 @@ abstract contract IGovernor is IERC165 {
         bytes32 descriptionHash
     ) public payable virtual returns (uint256 proposalId);
 
-    /**
+    /*
      * @dev Cast a vote
      *
      * Emits a {VoteCast} event.
      */
     function castVote(uint256 proposalId, uint8 support) public virtual returns (uint256 balance);
 
-    /**
+    /*
      * @dev Cast a with a reason
      *
      * Emits a {VoteCast} event.
@@ -199,7 +199,7 @@ abstract contract IGovernor is IERC165 {
         string calldata reason
     ) public virtual returns (uint256 balance);
 
-    /**
+    /*
      * @dev Cast a vote using the user cryptographic signature.
      *
      * Emits a {VoteCast} event.

@@ -4,11 +4,11 @@ pragma solidity ^0.8.0;
 
 import "./IAccessControl.sol";
 
-/**
+/*
  * @dev External interface of AccessControlEnumerable declared to support ERC165 detection.
  */
 interface IAccessControlEnumerable is IAccessControl {
-    /**
+    /*
      * @dev Returns one of the accounts that have `role`. `index` must be a
      * value between 0 and {getRoleMemberCount}, non-inclusive.
      *
@@ -22,7 +22,7 @@ interface IAccessControlEnumerable is IAccessControl {
      */
     function getRoleMember(bytes32 role, uint256 index) external view returns (address);
 
-    /**
+    /*
      * @dev Returns the number of accounts that have `role`. Can be used
      * together with {getRoleMember} to enumerate all bearers of a role.
      */

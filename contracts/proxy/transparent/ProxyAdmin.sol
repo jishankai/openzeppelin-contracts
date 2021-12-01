@@ -5,12 +5,12 @@ pragma solidity ^0.8.0;
 import "./TransparentUpgradeableProxy.sol";
 import "../../access/Ownable.sol";
 
-/**
+/*
  * @dev This is an auxiliary contract meant to be assigned as the admin of a {TransparentUpgradeableProxy}. For an
  * explanation of why you would want to use this see the documentation for {TransparentUpgradeableProxy}.
  */
 contract ProxyAdmin is Ownable {
-    /**
+    /*
      * @dev Returns the current implementation of `proxy`.
      *
      * Requirements:
@@ -25,7 +25,7 @@ contract ProxyAdmin is Ownable {
         return abi.decode(returndata, (address));
     }
 
-    /**
+    /*
      * @dev Returns the current admin of `proxy`.
      *
      * Requirements:
@@ -40,7 +40,7 @@ contract ProxyAdmin is Ownable {
         return abi.decode(returndata, (address));
     }
 
-    /**
+    /*
      * @dev Changes the admin of `proxy` to `newAdmin`.
      *
      * Requirements:
@@ -51,7 +51,7 @@ contract ProxyAdmin is Ownable {
         proxy.changeAdmin(newAdmin);
     }
 
-    /**
+    /*
      * @dev Upgrades `proxy` to `implementation`. See {TransparentUpgradeableProxy-upgradeTo}.
      *
      * Requirements:
@@ -62,7 +62,7 @@ contract ProxyAdmin is Ownable {
         proxy.upgradeTo(implementation);
     }
 
-    /**
+    /*
      * @dev Upgrades `proxy` to `implementation` and calls a function on the new implementation. See
      * {TransparentUpgradeableProxy-upgradeToAndCall}.
      *

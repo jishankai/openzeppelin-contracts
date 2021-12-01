@@ -107,7 +107,7 @@ contract GovernorCompatibilityBravoMock is GovernorCompatibilityBravo, GovernorT
         super._execute(proposalId, targets, values, calldatas, descriptionHash);
     }
 
-    /**
+    /*
      * @notice WARNING: this is for mock purposes only. Ability to the _cancel function should be restricted for live
      * deployments.
      */

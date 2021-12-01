@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../../access/Ownable.sol";
 import "../Address.sol";
 
-/**
+/*
  * @title Escrow
  * @dev Base escrow contract, holds funds designated for a payee until they
  * withdraw them.
@@ -30,7 +30,7 @@ contract Escrow is Ownable {
         return _deposits[payee];
     }
 
-    /**
+    /*
      * @dev Stores the sent amount as credit to be withdrawn.
      * @param payee The destination address of the funds.
      */
@@ -40,7 +40,7 @@ contract Escrow is Ownable {
         emit Deposited(payee, amount);
     }
 
-    /**
+    /*
      * @dev Withdraw accumulated balance for a payee, forwarding all gas to the
      * recipient.
      *

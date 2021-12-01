@@ -7,7 +7,7 @@ import "../../../utils/math/Math.sol";
 import "../../../utils/math/SafeCast.sol";
 import "../../../utils/cryptography/ECDSA.sol";
 
-/**
+/*
  * @dev Extension of ERC20 to support Compound-like voting and delegation. This version is more generic than Compound's,
  * and supports token supply up to 2^224^ - 1, while COMP is limited to 2^96^ - 1.
  *
@@ -37,38 +37,38 @@ abstract contract ERC20Votes is ERC20Permit {
     mapping(address => Checkpoint[]) private _checkpoints;
     Checkpoint[] private _totalSupplyCheckpoints;
 
-    /**
+    /*
      * @dev Emitted when an account changes their delegate.
      */
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
 
-    /**
+    /*
      * @dev Emitted when a token transfer or delegate change results in changes to an account's voting power.
      */
     event DelegateVotesChanged(address indexed delegate, uint256 previousBalance, uint256 newBalance);
 
-    /**
+    /*
      * @dev Get the `pos`-th checkpoint for `account`.
      */
     function checkpoints(address account, uint32 pos) public view virtual returns (Checkpoint memory) {
         return _checkpoints[account][pos];
     }
 
-    /**
+    /*
      * @dev Get number of checkpoints for `account`.
      */
     function numCheckpoints(address account) public view virtual returns (uint32) {
         return SafeCast.toUint32(_checkpoints[account].length);
     }
 
-    /**
+    /*
      * @dev Get the address `account` is currently delegating to.
      */
     function delegates(address account) public view virtual returns (address) {
         return _delegates[account];
     }
 
-    /**
+    /*
      * @dev Gets the current votes balance for `account`
      */
     function getVotes(address account) public view returns (uint256) {
@@ -76,7 +76,7 @@ abstract contract ERC20Votes is ERC20Permit {
         return pos == 0 ? 0 : _checkpoints[account][pos - 1].votes;
     }
 
-    /**
+    /*
      * @dev Retrieve the number of votes for `account` at the end of `blockNumber`.
      *
      * Requirements:
@@ -88,7 +88,7 @@ abstract contract ERC20Votes is ERC20Permit {
         return _checkpointsLookup(_checkpoints[account], blockNumber);
     }
 
-    /**
+    /*
      * @dev Retrieve the `totalSupply` at the end of `blockNumber`. Note, this value is the sum of all balances.
      * It is but NOT the sum of all the delegated votes!
      *
@@ -101,7 +101,7 @@ abstract contract ERC20Votes is ERC20Permit {
         return _checkpointsLookup(_totalSupplyCheckpoints, blockNumber);
     }
 
-    /**
+    /*
      * @dev Lookup a value in a list of (sorted) checkpoints.
      */
     function _checkpointsLookup(Checkpoint[] storage ckpts, uint256 blockNumber) private view returns (uint256) {
@@ -130,14 +130,14 @@ abstract contract ERC20Votes is ERC20Permit {
         return high == 0 ? 0 : ckpts[high - 1].votes;
     }
 
-    /**
+    /*
      * @dev Delegate votes from the sender to `delegatee`.
      */
     function delegate(address delegatee) public virtual {
         return _delegate(_msgSender(), delegatee);
     }
 
-    /**
+    /*
      * @dev Delegates votes from signer to `delegatee`
      */
     function delegateBySig(
@@ -159,14 +159,14 @@ abstract contract ERC20Votes is ERC20Permit {
         return _delegate(signer, delegatee);
     }
 
-    /**
+    /*
      * @dev Maximum token supply. Defaults to `type(uint224).max` (2^224^ - 1).
      */
     function _maxSupply() internal view virtual returns (uint224) {
         return type(uint224).max;
     }
 
-    /**
+    /*
      * @dev Snapshots the totalSupply after it has been increased.
      */
     function _mint(address account, uint256 amount) internal virtual override {
@@ -176,7 +176,7 @@ abstract contract ERC20Votes is ERC20Permit {
         _writeCheckpoint(_totalSupplyCheckpoints, _add, amount);
     }
 
-    /**
+    /*
      * @dev Snapshots the totalSupply after it has been decreased.
      */
     function _burn(address account, uint256 amount) internal virtual override {
@@ -185,7 +185,7 @@ abstract contract ERC20Votes is ERC20Permit {
         _writeCheckpoint(_totalSupplyCheckpoints, _subtract, amount);
     }
 
-    /**
+    /*
      * @dev Move voting power when tokens are transferred.
      *
      * Emits a {DelegateVotesChanged} event.
@@ -200,7 +200,7 @@ abstract contract ERC20Votes is ERC20Permit {
         _moveVotingPower(delegates(from), delegates(to), amount);
     }
 
-    /**
+    /*
      * @dev Change delegation for `delegator` to `delegatee`.
      *
      * Emits events {DelegateChanged} and {DelegateVotesChanged}.

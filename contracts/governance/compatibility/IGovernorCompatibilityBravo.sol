@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 
 import "../IGovernor.sol";
 
-/**
+/*
  * @dev Interface extension that adds missing functions to the {Governor} core to provide `GovernorBravo` compatibility.
  *
  * _Available since v4.3._
  */
 abstract contract IGovernorCompatibilityBravo is IGovernor {
-    /**
+    /*
      * @dev Proposal structure from Compound Governor Bravo. Not actually used by the compatibility layer, as
      * {{proposal}} returns a very different structure.
      */
@@ -32,7 +32,7 @@ abstract contract IGovernorCompatibilityBravo is IGovernor {
         mapping(address => Receipt) receipts;
     }
 
-    /**
+    /*
      * @dev Receipt structure from Compound Governor Bravo
      */
     struct Receipt {
@@ -41,12 +41,12 @@ abstract contract IGovernorCompatibilityBravo is IGovernor {
         uint96 votes;
     }
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface.
      */
     function quorumVotes() public view virtual returns (uint256);
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"The official record of all proposals ever proposed"_.
      */
     function proposals(uint256)
@@ -66,7 +66,7 @@ abstract contract IGovernorCompatibilityBravo is IGovernor {
             bool executed
         );
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"Function used to propose a new proposal"_.
      */
     function propose(
@@ -77,22 +77,22 @@ abstract contract IGovernorCompatibilityBravo is IGovernor {
         string memory description
     ) public virtual returns (uint256);
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"Queues a proposal of state succeeded"_.
      */
     function queue(uint256 proposalId) public virtual;
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"Executes a queued proposal if eta has passed"_.
      */
     function execute(uint256 proposalId) public payable virtual;
 
-    /**
+    /*
      * @dev Cancels a proposal only if sender is the proposer, or proposer delegates dropped below proposal threshold.
      */
     function cancel(uint256 proposalId) public virtual;
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"Gets actions of a proposal"_.
      */
     function getActions(uint256 proposalId)
@@ -106,12 +106,12 @@ abstract contract IGovernorCompatibilityBravo is IGovernor {
             bytes[] memory calldatas
         );
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"Gets the receipt for a voter on a given proposal"_.
      */
     function getReceipt(uint256 proposalId, address voter) public view virtual returns (Receipt memory);
 
-    /**
+    /*
      * @dev Part of the Governor Bravo's interface: _"The number of votes required in order for a voter to become a proposer"_.
      */
     function proposalThreshold() public view virtual returns (uint256);

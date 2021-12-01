@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../IERC20.sol";
 import "../../../utils/Address.sol";
 
-/**
+/*
  * @title SafeERC20
  * @dev Wrappers around ERC20 operations that throw on failure (when the token
  * contract returns false). Tokens that return no value (and instead revert or
@@ -34,7 +34,7 @@ library SafeERC20 {
         _callOptionalReturn(token, abi.encodeWithSelector(token.transferFrom.selector, from, to, value));
     }
 
-    /**
+    /*
      * @dev Deprecated. This function has issues similar to the ones found in
      * {IERC20-approve}, and its usage is discouraged.
      *
@@ -78,7 +78,7 @@ library SafeERC20 {
         }
     }
 
-    /**
+    /*
      * @dev Imitates a Solidity high-level call (i.e. a regular function call to a contract), relaxing the requirement
      * on the return value: the return value is optional (but if data is returned, it must not be false).
      * @param token The token targeted by the call.

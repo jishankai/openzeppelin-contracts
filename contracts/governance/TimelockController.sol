@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../access/AccessControl.sol";
 
-/**
+/*
  * @dev Contract module which acts as a timelocked controller. When set as the
  * owner of an `Ownable` smart contract, it enforces a timelock on all
  * `onlyOwner` maintenance operations. This gives time for users of the
@@ -28,7 +28,7 @@ contract TimelockController is AccessControl {
     mapping(bytes32 => uint256) private _timestamps;
     uint256 private _minDelay;
 
-    /**
+    /*
      * @dev Emitted when a call is scheduled as part of operation `id`.
      */
     event CallScheduled(
@@ -41,22 +41,22 @@ contract TimelockController is AccessControl {
         uint256 delay
     );
 
-    /**
+    /*
      * @dev Emitted when a call is performed as part of operation `id`.
      */
     event CallExecuted(bytes32 indexed id, uint256 indexed index, address target, uint256 value, bytes data);
 
-    /**
+    /*
      * @dev Emitted when operation `id` is cancelled.
      */
     event Cancelled(bytes32 indexed id);
 
-    /**
+    /*
      * @dev Emitted when the minimum delay for future operations is modified.
      */
     event MinDelayChange(uint256 oldDuration, uint256 newDuration);
 
-    /**
+    /*
      * @dev Initializes the contract with a given `minDelay`.
      */
     constructor(
@@ -86,7 +86,7 @@ contract TimelockController is AccessControl {
         emit MinDelayChange(0, minDelay);
     }
 
-    /**
+    /*
      * @dev Modifier to make a function callable only by a certain role. In
      * addition to checking the sender's role, `address(0)` 's role is also
      * considered. Granting a role to `address(0)` is equivalent to enabling
@@ -99,12 +99,12 @@ contract TimelockController is AccessControl {
         _;
     }
 
-    /**
+    /*
      * @dev Contract might receive/hold ETH as part of the maintenance process.
      */
     receive() external payable {}
 
-    /**
+    /*
      * @dev Returns whether an id correspond to a registered operation. This
      * includes both Pending, Ready and Done operations.
      */
@@ -112,14 +112,14 @@ contract TimelockController is AccessControl {
         return getTimestamp(id) > 0;
     }
 
-    /**
+    /*
      * @dev Returns whether an operation is pending or not.
      */
     function isOperationPending(bytes32 id) public view virtual returns (bool pending) {
         return getTimestamp(id) > _DONE_TIMESTAMP;
     }
 
-    /**
+    /*
      * @dev Returns whether an operation is ready or not.
      */
     function isOperationReady(bytes32 id) public view virtual returns (bool ready) {
@@ -127,14 +127,14 @@ contract TimelockController is AccessControl {
         return timestamp > _DONE_TIMESTAMP && timestamp <= block.timestamp;
     }
 
-    /**
+    /*
      * @dev Returns whether an operation is done or not.
      */
     function isOperationDone(bytes32 id) public view virtual returns (bool done) {
         return getTimestamp(id) == _DONE_TIMESTAMP;
     }
 
-    /**
+    /*
      * @dev Returns the timestamp at with an operation becomes ready (0 for
      * unset operations, 1 for done operations).
      */
@@ -142,7 +142,7 @@ contract TimelockController is AccessControl {
         return _timestamps[id];
     }
 
-    /**
+    /*
      * @dev Returns the minimum delay for an operation to become valid.
      *
      * This value can be changed by executing an operation that calls `updateDelay`.
@@ -151,7 +151,7 @@ contract TimelockController is AccessControl {
         return _minDelay;
     }
 
-    /**
+    /*
      * @dev Returns the identifier of an operation containing a single
      * transaction.
      */
@@ -165,7 +165,7 @@ contract TimelockController is AccessControl {
         return keccak256(abi.encode(target, value, data, predecessor, salt));
     }
 
-    /**
+    /*
      * @dev Returns the identifier of an operation containing a batch of
      * transactions.
      */
@@ -179,7 +179,7 @@ contract TimelockController is AccessControl {
         return keccak256(abi.encode(targets, values, datas, predecessor, salt));
     }
 
-    /**
+    /*
      * @dev Schedule an operation containing a single transaction.
      *
      * Emits a {CallScheduled} event.
@@ -201,7 +201,7 @@ contract TimelockController is AccessControl {
         emit CallScheduled(id, 0, target, value, data, predecessor, delay);
     }
 
-    /**
+    /*
      * @dev Schedule an operation containing a batch of transactions.
      *
      * Emits one {CallScheduled} event per transaction in the batch.
@@ -228,7 +228,7 @@ contract TimelockController is AccessControl {
         }
     }
 
-    /**
+    /*
      * @dev Schedule an operation that is to becomes valid after a given delay.
      */
     function _schedule(bytes32 id, uint256 delay) private {
@@ -237,7 +237,7 @@ contract TimelockController is AccessControl {
         _timestamps[id] = block.timestamp + delay;
     }
 
-    /**
+    /*
      * @dev Cancel an operation.
      *
      * Requirements:
@@ -251,7 +251,7 @@ contract TimelockController is AccessControl {
         emit Cancelled(id);
     }
 
-    /**
+    /*
      * @dev Execute an (ready) operation containing a single transaction.
      *
      * Emits a {CallExecuted} event.
@@ -273,7 +273,7 @@ contract TimelockController is AccessControl {
         _afterCall(id);
     }
 
-    /**
+    /*
      * @dev Execute an (ready) operation containing a batch of transactions.
      *
      * Emits one {CallExecuted} event per transaction in the batch.
@@ -300,7 +300,7 @@ contract TimelockController is AccessControl {
         _afterCall(id);
     }
 
-    /**
+    /*
      * @dev Checks before execution of an operation's calls.
      */
     function _beforeCall(bytes32 id, bytes32 predecessor) private view {
@@ -308,7 +308,7 @@ contract TimelockController is AccessControl {
         require(predecessor == bytes32(0) || isOperationDone(predecessor), "TimelockController: missing dependency");
     }
 
-    /**
+    /*
      * @dev Checks after execution of an operation's calls.
      */
     function _afterCall(bytes32 id) private {
@@ -316,7 +316,7 @@ contract TimelockController is AccessControl {
         _timestamps[id] = _DONE_TIMESTAMP;
     }
 
-    /**
+    /*
      * @dev Execute an operation's call.
      *
      * Emits a {CallExecuted} event.
@@ -334,7 +334,7 @@ contract TimelockController is AccessControl {
         emit CallExecuted(id, index, target, value, data);
     }
 
-    /**
+    /*
      * @dev Changes the minimum timelock duration for future operations.
      *
      * Emits a {MinDelayChange} event.

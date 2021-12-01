@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Library for reading and writing primitive types to specific storage slots.
  *
  * Storage slots are often used to avoid storage conflict when dealing with upgradeable contracts.
@@ -45,7 +45,7 @@ library StorageSlot {
         uint256 value;
     }
 
-    /**
+    /*
      * @dev Returns an `AddressSlot` with member `value` located at `slot`.
      */
     function getAddressSlot(bytes32 slot) internal pure returns (AddressSlot storage r) {
@@ -54,7 +54,7 @@ library StorageSlot {
         }
     }
 
-    /**
+    /*
      * @dev Returns an `BooleanSlot` with member `value` located at `slot`.
      */
     function getBooleanSlot(bytes32 slot) internal pure returns (BooleanSlot storage r) {
@@ -63,7 +63,7 @@ library StorageSlot {
         }
     }
 
-    /**
+    /*
      * @dev Returns an `Bytes32Slot` with member `value` located at `slot`.
      */
     function getBytes32Slot(bytes32 slot) internal pure returns (Bytes32Slot storage r) {
@@ -72,7 +72,7 @@ library StorageSlot {
         }
     }
 
-    /**
+    /*
      * @dev Returns an `Uint256Slot` with member `value` located at `slot`.
      */
     function getUint256Slot(bytes32 slot) internal pure returns (Uint256Slot storage r) {

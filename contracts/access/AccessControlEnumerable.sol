@@ -6,7 +6,7 @@ import "./IAccessControlEnumerable.sol";
 import "./AccessControl.sol";
 import "../utils/structs/EnumerableSet.sol";
 
-/**
+/*
  * @dev Extension of {AccessControl} that allows enumerating the members of each role.
  */
 abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessControl {
@@ -14,14 +14,14 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
 
     mapping(bytes32 => EnumerableSet.AddressSet) private _roleMembers;
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return interfaceId == type(IAccessControlEnumerable).interfaceId || super.supportsInterface(interfaceId);
     }
 
-    /**
+    /*
      * @dev Returns one of the accounts that have `role`. `index` must be a
      * value between 0 and {getRoleMemberCount}, non-inclusive.
      *
@@ -37,7 +37,7 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
         return _roleMembers[role].at(index);
     }
 
-    /**
+    /*
      * @dev Returns the number of accounts that have `role`. Can be used
      * together with {getRoleMember} to enumerate all bearers of a role.
      */
@@ -45,7 +45,7 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
         return _roleMembers[role].length();
     }
 
-    /**
+    /*
      * @dev Overload {grantRole} to track enumerable memberships
      */
     function grantRole(bytes32 role, address account) public virtual override(AccessControl, IAccessControl) {
@@ -53,7 +53,7 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
         _roleMembers[role].add(account);
     }
 
-    /**
+    /*
      * @dev Overload {revokeRole} to track enumerable memberships
      */
     function revokeRole(bytes32 role, address account) public virtual override(AccessControl, IAccessControl) {
@@ -61,7 +61,7 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
         _roleMembers[role].remove(account);
     }
 
-    /**
+    /*
      * @dev Overload {renounceRole} to track enumerable memberships
      */
     function renounceRole(bytes32 role, address account) public virtual override(AccessControl, IAccessControl) {
@@ -69,7 +69,7 @@ abstract contract AccessControlEnumerable is IAccessControlEnumerable, AccessCon
         _roleMembers[role].remove(account);
     }
 
-    /**
+    /*
      * @dev Overload {_setupRole} to track enumerable memberships
      */
     function _setupRole(bytes32 role, address account) internal virtual override {

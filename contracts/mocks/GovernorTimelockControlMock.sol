@@ -63,7 +63,7 @@ contract GovernorTimelockControlMock is GovernorTimelockControl, GovernorVotesQu
         return _cancel(targets, values, calldatas, descriptionHash);
     }
 
-    /**
+    /*
      * Overriding nightmare
      */
     function state(uint256 proposalId)

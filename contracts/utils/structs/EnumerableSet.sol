@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Library for managing
  * https://en.wikipedia.org/wiki/Set_(abstract_data_type)[sets] of primitive
  * types.
@@ -44,7 +44,7 @@ library EnumerableSet {
         mapping(bytes32 => uint256) _indexes;
     }
 
-    /**
+    /*
      * @dev Add a value to a set. O(1).
      *
      * Returns true if the value was added to the set, that is if it was not
@@ -62,7 +62,7 @@ library EnumerableSet {
         }
     }
 
-    /**
+    /*
      * @dev Removes a value from a set. O(1).
      *
      * Returns true if the value was removed from the set, that is if it was
@@ -102,21 +102,21 @@ library EnumerableSet {
         }
     }
 
-    /**
+    /*
      * @dev Returns true if the value is in the set. O(1).
      */
     function _contains(Set storage set, bytes32 value) private view returns (bool) {
         return set._indexes[value] != 0;
     }
 
-    /**
+    /*
      * @dev Returns the number of values on the set. O(1).
      */
     function _length(Set storage set) private view returns (uint256) {
         return set._values.length;
     }
 
-    /**
+    /*
      * @dev Returns the value stored at position `index` in the set. O(1).
      *
      * Note that there are no guarantees on the ordering of values inside the
@@ -130,7 +130,7 @@ library EnumerableSet {
         return set._values[index];
     }
 
-    /**
+    /*
      * @dev Return the entire set in an array
      *
      * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed
@@ -148,7 +148,7 @@ library EnumerableSet {
         Set _inner;
     }
 
-    /**
+    /*
      * @dev Add a value to a set. O(1).
      *
      * Returns true if the value was added to the set, that is if it was not
@@ -158,7 +158,7 @@ library EnumerableSet {
         return _add(set._inner, value);
     }
 
-    /**
+    /*
      * @dev Removes a value from a set. O(1).
      *
      * Returns true if the value was removed from the set, that is if it was
@@ -168,21 +168,21 @@ library EnumerableSet {
         return _remove(set._inner, value);
     }
 
-    /**
+    /*
      * @dev Returns true if the value is in the set. O(1).
      */
     function contains(Bytes32Set storage set, bytes32 value) internal view returns (bool) {
         return _contains(set._inner, value);
     }
 
-    /**
+    /*
      * @dev Returns the number of values in the set. O(1).
      */
     function length(Bytes32Set storage set) internal view returns (uint256) {
         return _length(set._inner);
     }
 
-    /**
+    /*
      * @dev Returns the value stored at position `index` in the set. O(1).
      *
      * Note that there are no guarantees on the ordering of values inside the
@@ -196,7 +196,7 @@ library EnumerableSet {
         return _at(set._inner, index);
     }
 
-    /**
+    /*
      * @dev Return the entire set in an array
      *
      * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed
@@ -214,7 +214,7 @@ library EnumerableSet {
         Set _inner;
     }
 
-    /**
+    /*
      * @dev Add a value to a set. O(1).
      *
      * Returns true if the value was added to the set, that is if it was not
@@ -224,7 +224,7 @@ library EnumerableSet {
         return _add(set._inner, bytes32(uint256(uint160(value))));
     }
 
-    /**
+    /*
      * @dev Removes a value from a set. O(1).
      *
      * Returns true if the value was removed from the set, that is if it was
@@ -234,21 +234,21 @@ library EnumerableSet {
         return _remove(set._inner, bytes32(uint256(uint160(value))));
     }
 
-    /**
+    /*
      * @dev Returns true if the value is in the set. O(1).
      */
     function contains(AddressSet storage set, address value) internal view returns (bool) {
         return _contains(set._inner, bytes32(uint256(uint160(value))));
     }
 
-    /**
+    /*
      * @dev Returns the number of values in the set. O(1).
      */
     function length(AddressSet storage set) internal view returns (uint256) {
         return _length(set._inner);
     }
 
-    /**
+    /*
      * @dev Returns the value stored at position `index` in the set. O(1).
      *
      * Note that there are no guarantees on the ordering of values inside the
@@ -262,7 +262,7 @@ library EnumerableSet {
         return address(uint160(uint256(_at(set._inner, index))));
     }
 
-    /**
+    /*
      * @dev Return the entire set in an array
      *
      * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed
@@ -287,7 +287,7 @@ library EnumerableSet {
         Set _inner;
     }
 
-    /**
+    /*
      * @dev Add a value to a set. O(1).
      *
      * Returns true if the value was added to the set, that is if it was not
@@ -297,7 +297,7 @@ library EnumerableSet {
         return _add(set._inner, bytes32(value));
     }
 
-    /**
+    /*
      * @dev Removes a value from a set. O(1).
      *
      * Returns true if the value was removed from the set, that is if it was
@@ -307,21 +307,21 @@ library EnumerableSet {
         return _remove(set._inner, bytes32(value));
     }
 
-    /**
+    /*
      * @dev Returns true if the value is in the set. O(1).
      */
     function contains(UintSet storage set, uint256 value) internal view returns (bool) {
         return _contains(set._inner, bytes32(value));
     }
 
-    /**
+    /*
      * @dev Returns the number of values on the set. O(1).
      */
     function length(UintSet storage set) internal view returns (uint256) {
         return _length(set._inner);
     }
 
-    /**
+    /*
      * @dev Returns the value stored at position `index` in the set. O(1).
      *
      * Note that there are no guarantees on the ordering of values inside the
@@ -335,7 +335,7 @@ library EnumerableSet {
         return uint256(_at(set._inner, index));
     }
 
-    /**
+    /*
      * @dev Return the entire set in an array
      *
      * WARNING: This operation will copy the entire storage to memory, which can be quite expensive. This is designed

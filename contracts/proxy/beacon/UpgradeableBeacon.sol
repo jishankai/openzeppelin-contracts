@@ -6,7 +6,7 @@ import "./IBeacon.sol";
 import "../../access/Ownable.sol";
 import "../../utils/Address.sol";
 
-/**
+/*
  * @dev This contract is used in conjunction with one or more instances of {BeaconProxy} to determine their
  * implementation contract, which is where they will delegate all function calls.
  *
@@ -15,12 +15,12 @@ import "../../utils/Address.sol";
 contract UpgradeableBeacon is IBeacon, Ownable {
     address private _implementation;
 
-    /**
+    /*
      * @dev Emitted when the implementation returned by the beacon is changed.
      */
     event Upgraded(address indexed implementation);
 
-    /**
+    /*
      * @dev Sets the address of the initial implementation, and the deployer account as the owner who can upgrade the
      * beacon.
      */
@@ -28,14 +28,14 @@ contract UpgradeableBeacon is IBeacon, Ownable {
         _setImplementation(implementation_);
     }
 
-    /**
+    /*
      * @dev Returns the current implementation address.
      */
     function implementation() public view virtual override returns (address) {
         return _implementation;
     }
 
-    /**
+    /*
      * @dev Upgrades the beacon to a new implementation.
      *
      * Emits an {Upgraded} event.
@@ -50,7 +50,7 @@ contract UpgradeableBeacon is IBeacon, Ownable {
         emit Upgraded(newImplementation);
     }
 
-    /**
+    /*
      * @dev Sets the implementation contract address for this beacon
      *
      * Requirements:

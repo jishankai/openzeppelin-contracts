@@ -4,31 +4,31 @@ pragma solidity ^0.8.0;
 
 import "../../utils/introspection/IERC165.sol";
 
-/**
+/*
  * @dev Required interface of an ERC721 compliant contract.
  */
 interface IERC721 is IERC165 {
-    /**
+    /*
      * @dev Emitted when `tokenId` token is transferred from `from` to `to`.
      */
     event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
 
-    /**
+    /*
      * @dev Emitted when `owner` enables `approved` to manage the `tokenId` token.
      */
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
 
-    /**
+    /*
      * @dev Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets.
      */
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
-    /**
+    /*
      * @dev Returns the number of tokens in ``owner``'s account.
      */
     function balanceOf(address owner) external view returns (uint256 balance);
 
-    /**
+    /*
      * @dev Returns the owner of the `tokenId` token.
      *
      * Requirements:
@@ -37,7 +37,7 @@ interface IERC721 is IERC165 {
      */
     function ownerOf(uint256 tokenId) external view returns (address owner);
 
-    /**
+    /*
      * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients
      * are aware of the ERC721 protocol to prevent tokens from being forever locked.
      *
@@ -57,7 +57,7 @@ interface IERC721 is IERC165 {
         uint256 tokenId
     ) external;
 
-    /**
+    /*
      * @dev Transfers `tokenId` token from `from` to `to`.
      *
      * WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible.
@@ -77,7 +77,7 @@ interface IERC721 is IERC165 {
         uint256 tokenId
     ) external;
 
-    /**
+    /*
      * @dev Gives permission to `to` to transfer `tokenId` token to another account.
      * The approval is cleared when the token is transferred.
      *
@@ -92,7 +92,7 @@ interface IERC721 is IERC165 {
      */
     function approve(address to, uint256 tokenId) external;
 
-    /**
+    /*
      * @dev Returns the account approved for `tokenId` token.
      *
      * Requirements:
@@ -101,7 +101,7 @@ interface IERC721 is IERC165 {
      */
     function getApproved(uint256 tokenId) external view returns (address operator);
 
-    /**
+    /*
      * @dev Approve or remove `operator` as an operator for the caller.
      * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
      *
@@ -113,14 +113,14 @@ interface IERC721 is IERC165 {
      */
     function setApprovalForAll(address operator, bool _approved) external;
 
-    /**
+    /*
      * @dev Returns if the `operator` is allowed to manage all of the assets of `owner`.
      *
      * See {setApprovalForAll}
      */
     function isApprovedForAll(address owner, address operator) external view returns (bool);
 
-    /**
+    /*
      * @dev Safely transfers `tokenId` token from `from` to `to`.
      *
      * Requirements:

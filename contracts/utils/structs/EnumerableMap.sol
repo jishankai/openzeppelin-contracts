@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./EnumerableSet.sol";
 
-/**
+/*
  * @dev Library for managing an enumerable variant of Solidity's
  * https://solidity.readthedocs.io/en/latest/types.html#mapping-types[`mapping`]
  * type.
@@ -46,7 +46,7 @@ library EnumerableMap {
         mapping(bytes32 => bytes32) _values;
     }
 
-    /**
+    /*
      * @dev Adds a key-value pair to a map, or updates the value for an existing
      * key. O(1).
      *
@@ -62,7 +62,7 @@ library EnumerableMap {
         return map._keys.add(key);
     }
 
-    /**
+    /*
      * @dev Removes a key-value pair from a map. O(1).
      *
      * Returns true if the key was removed from the map, that is if it was present.
@@ -72,21 +72,21 @@ library EnumerableMap {
         return map._keys.remove(key);
     }
 
-    /**
+    /*
      * @dev Returns true if the key is in the map. O(1).
      */
     function _contains(Map storage map, bytes32 key) private view returns (bool) {
         return map._keys.contains(key);
     }
 
-    /**
+    /*
      * @dev Returns the number of key-value pairs in the map. O(1).
      */
     function _length(Map storage map) private view returns (uint256) {
         return map._keys.length();
     }
 
-    /**
+    /*
      * @dev Returns the key-value pair stored at position `index` in the map. O(1).
      *
      * Note that there are no guarantees on the ordering of entries inside the
@@ -101,7 +101,7 @@ library EnumerableMap {
         return (key, map._values[key]);
     }
 
-    /**
+    /*
      * @dev Tries to returns the value associated with `key`.  O(1).
      * Does not revert if `key` is not in the map.
      */
@@ -114,7 +114,7 @@ library EnumerableMap {
         }
     }
 
-    /**
+    /*
      * @dev Returns the value associated with `key`.  O(1).
      *
      * Requirements:
@@ -127,7 +127,7 @@ library EnumerableMap {
         return value;
     }
 
-    /**
+    /*
      * @dev Same as {_get}, with a custom error message when `key` is not in the map.
      *
      * CAUTION: This function is deprecated because it requires allocating memory for the error
@@ -149,7 +149,7 @@ library EnumerableMap {
         Map _inner;
     }
 
-    /**
+    /*
      * @dev Adds a key-value pair to a map, or updates the value for an existing
      * key. O(1).
      *
@@ -164,7 +164,7 @@ library EnumerableMap {
         return _set(map._inner, bytes32(key), bytes32(uint256(uint160(value))));
     }
 
-    /**
+    /*
      * @dev Removes a value from a set. O(1).
      *
      * Returns true if the key was removed from the map, that is if it was present.
@@ -173,21 +173,21 @@ library EnumerableMap {
         return _remove(map._inner, bytes32(key));
     }
 
-    /**
+    /*
      * @dev Returns true if the key is in the map. O(1).
      */
     function contains(UintToAddressMap storage map, uint256 key) internal view returns (bool) {
         return _contains(map._inner, bytes32(key));
     }
 
-    /**
+    /*
      * @dev Returns the number of elements in the map. O(1).
      */
     function length(UintToAddressMap storage map) internal view returns (uint256) {
         return _length(map._inner);
     }
 
-    /**
+    /*
      * @dev Returns the element stored at position `index` in the set. O(1).
      * Note that there are no guarantees on the ordering of values inside the
      * array, and it may change when more values are added or removed.
@@ -201,7 +201,7 @@ library EnumerableMap {
         return (uint256(key), address(uint160(uint256(value))));
     }
 
-    /**
+    /*
      * @dev Tries to returns the value associated with `key`.  O(1).
      * Does not revert if `key` is not in the map.
      *
@@ -212,7 +212,7 @@ library EnumerableMap {
         return (success, address(uint160(uint256(value))));
     }
 
-    /**
+    /*
      * @dev Returns the value associated with `key`.  O(1).
      *
      * Requirements:
@@ -223,7 +223,7 @@ library EnumerableMap {
         return address(uint160(uint256(_get(map._inner, bytes32(key)))));
     }
 
-    /**
+    /*
      * @dev Same as {get}, with a custom error message when `key` is not in the map.
      *
      * CAUTION: This function is deprecated because it requires allocating memory for the error

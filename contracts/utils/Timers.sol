@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev Tooling for timepoints, timers and delays
  */
 library Timers {

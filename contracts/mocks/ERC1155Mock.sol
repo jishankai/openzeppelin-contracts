@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../token/ERC1155/ERC1155.sol";
 
-/**
+/*
  * @title ERC1155Mock
  * This mock just publicizes internal functions for testing purposes
  */

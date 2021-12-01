@@ -8,7 +8,7 @@ import "../extensions/ERC1155Pausable.sol";
 import "../../../access/AccessControlEnumerable.sol";
 import "../../../utils/Context.sol";
 
-/**
+/*
  * @dev {ERC1155} token, including:
  *
  *  - ability for holders to burn (destroy) their tokens
@@ -26,7 +26,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    /**
+    /*
      * @dev Grants `DEFAULT_ADMIN_ROLE`, `MINTER_ROLE`, and `PAUSER_ROLE` to the account that
      * deploys the contract.
      */
@@ -37,7 +37,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
         _setupRole(PAUSER_ROLE, _msgSender());
     }
 
-    /**
+    /*
      * @dev Creates `amount` new tokens for `to`, of token type `id`.
      *
      * See {ERC1155-_mint}.
@@ -57,7 +57,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
         _mint(to, id, amount, data);
     }
 
-    /**
+    /*
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] variant of {mint}.
      */
     function mintBatch(
@@ -71,7 +71,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
         _mintBatch(to, ids, amounts, data);
     }
 
-    /**
+    /*
      * @dev Pauses all token transfers.
      *
      * See {ERC1155Pausable} and {Pausable-_pause}.
@@ -85,7 +85,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
         _pause();
     }
 
-    /**
+    /*
      * @dev Unpauses all token transfers.
      *
      * See {ERC1155Pausable} and {Pausable-_unpause}.
@@ -99,7 +99,7 @@ contract ERC1155PresetMinterPauser is Context, AccessControlEnumerable, ERC1155B
         _unpause();
     }
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId)

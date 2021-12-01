@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../extensions/ERC20Burnable.sol";
 
-/**
+/*
  * @dev {ERC20} token, including:
  *
  *  - Preminted initial supply
@@ -16,7 +16,7 @@ import "../extensions/ERC20Burnable.sol";
  * _Available since v3.4._
  */
 contract ERC20PresetFixedSupply is ERC20Burnable {
-    /**
+    /*
      * @dev Mints `initialSupply` amount of token and transfers them to `owner`.
      *
      * See {ERC20-constructor}.

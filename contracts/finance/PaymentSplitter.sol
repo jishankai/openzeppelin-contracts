@@ -6,7 +6,7 @@ import "../utils/Address.sol";
 import "../utils/Context.sol";
 import "../utils/math/SafeMath.sol";
 
-/**
+/*
  * @title PaymentSplitter
  * @dev This contract allows to split Ether payments among a group of accounts. The sender does not need to be aware
  * that the Ether will be split in this way, since it is handled transparently by the contract.
@@ -31,7 +31,7 @@ contract PaymentSplitter is Context {
     mapping(address => uint256) private _released;
     address[] private _payees;
 
-    /**
+    /*
      * @dev Creates an instance of `PaymentSplitter` where each account in `payees` is assigned the number of shares at
      * the matching position in the `shares` array.
      *
@@ -47,7 +47,7 @@ contract PaymentSplitter is Context {
         }
     }
 
-    /**
+    /*
      * @dev The Ether received will be logged with {PaymentReceived} events. Note that these events are not fully
      * reliable: it's possible for a contract to receive Ether without triggering this function. This only affects the
      * reliability of the events, and not the actual splitting of Ether.
@@ -60,42 +60,42 @@ contract PaymentSplitter is Context {
         emit PaymentReceived(_msgSender(), msg.value);
     }
 
-    /**
+    /*
      * @dev Getter for the total shares held by payees.
      */
     function totalShares() public view returns (uint256) {
         return _totalShares;
     }
 
-    /**
+    /*
      * @dev Getter for the total amount of Ether already released.
      */
     function totalReleased() public view returns (uint256) {
         return _totalReleased;
     }
 
-    /**
+    /*
      * @dev Getter for the amount of shares held by an account.
      */
     function shares(address account) public view returns (uint256) {
         return _shares[account];
     }
 
-    /**
+    /*
      * @dev Getter for the amount of Ether already released to a payee.
      */
     function released(address account) public view returns (uint256) {
         return _released[account];
     }
 
-    /**
+    /*
      * @dev Getter for the address of the payee number `index`.
      */
     function payee(uint256 index) public view returns (address) {
         return _payees[index];
     }
 
-    /**
+    /*
      * @dev Triggers a transfer to `account` of the amount of Ether they are owed, according to their percentage of the
      * total shares and their previous withdrawals.
      */
@@ -114,7 +114,7 @@ contract PaymentSplitter is Context {
         emit PaymentReleased(account, payment);
     }
 
-    /**
+    /*
      * @dev Add a new payee to the contract.
      * @param account The address of the payee to add.
      * @param shares_ The number of shares owned by the payee.

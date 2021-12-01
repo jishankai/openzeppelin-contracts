@@ -6,14 +6,14 @@ pragma solidity ^0.8.0;
 // This version of SafeMath should only be used with Solidity 0.8 or later,
 // because it relies on the compiler's built in overflow checks.
 
-/**
+/*
  * @dev Wrappers over Solidity's arithmetic operations.
  *
  * NOTE: `SafeMath` is no longer needed starting with Solidity 0.8. The compiler
  * now has built in overflow checking.
  */
 library SafeMath {
-    /**
+    /*
      * @dev Returns the addition of two unsigned integers, with an overflow flag.
      *
      * _Available since v3.4._
@@ -26,7 +26,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the substraction of two unsigned integers, with an overflow flag.
      *
      * _Available since v3.4._
@@ -38,7 +38,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the multiplication of two unsigned integers, with an overflow flag.
      *
      * _Available since v3.4._
@@ -55,7 +55,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the division of two unsigned integers, with a division by zero flag.
      *
      * _Available since v3.4._
@@ -67,7 +67,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the remainder of dividing two unsigned integers, with a division by zero flag.
      *
      * _Available since v3.4._
@@ -79,7 +79,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the addition of two unsigned integers, reverting on
      * overflow.
      *
@@ -93,7 +93,7 @@ library SafeMath {
         return a + b;
     }
 
-    /**
+    /*
      * @dev Returns the subtraction of two unsigned integers, reverting on
      * overflow (when the result is negative).
      *
@@ -107,7 +107,7 @@ library SafeMath {
         return a - b;
     }
 
-    /**
+    /*
      * @dev Returns the multiplication of two unsigned integers, reverting on
      * overflow.
      *
@@ -121,7 +121,7 @@ library SafeMath {
         return a * b;
     }
 
-    /**
+    /*
      * @dev Returns the integer division of two unsigned integers, reverting on
      * division by zero. The result is rounded towards zero.
      *
@@ -135,7 +135,7 @@ library SafeMath {
         return a / b;
     }
 
-    /**
+    /*
      * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
      * reverting when dividing by zero.
      *
@@ -151,7 +151,7 @@ library SafeMath {
         return a % b;
     }
 
-    /**
+    /*
      * @dev Returns the subtraction of two unsigned integers, reverting with custom message on
      * overflow (when the result is negative).
      *
@@ -175,7 +175,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the integer division of two unsigned integers, reverting with custom message on
      * division by zero. The result is rounded towards zero.
      *
@@ -198,7 +198,7 @@ library SafeMath {
         }
     }
 
-    /**
+    /*
      * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
      * reverting with custom message when dividing by zero.
      *

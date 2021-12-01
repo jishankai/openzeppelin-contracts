@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./ConditionalEscrow.sol";
 
-/**
+/*
  * @title RefundEscrow
  * @dev Escrow that holds funds for a beneficiary, deposited from multiple
  * parties.
@@ -29,7 +29,7 @@ contract RefundEscrow is ConditionalEscrow {
     State private _state;
     address payable private immutable _beneficiary;
 
-    /**
+    /*
      * @dev Constructor.
      * @param beneficiary_ The beneficiary of the deposits.
      */
@@ -39,21 +39,21 @@ contract RefundEscrow is ConditionalEscrow {
         _state = State.Active;
     }
 
-    /**
+    /*
      * @return The current state of the escrow.
      */
     function state() public view virtual returns (State) {
         return _state;
     }
 
-    /**
+    /*
      * @return The beneficiary of the escrow.
      */
     function beneficiary() public view virtual returns (address payable) {
         return _beneficiary;
     }
 
-    /**
+    /*
      * @dev Stores funds that may later be refunded.
      * @param refundee The address funds will be sent to if a refund occurs.
      */
@@ -62,7 +62,7 @@ contract RefundEscrow is ConditionalEscrow {
         super.deposit(refundee);
     }
 
-    /**
+    /*
      * @dev Allows for the beneficiary to withdraw their funds, rejecting
      * further deposits.
      */
@@ -72,7 +72,7 @@ contract RefundEscrow is ConditionalEscrow {
         emit RefundsClosed();
     }
 
-    /**
+    /*
      * @dev Allows for refunds to take place, rejecting further deposits.
      */
     function enableRefunds() public virtual onlyOwner {
@@ -81,7 +81,7 @@ contract RefundEscrow is ConditionalEscrow {
         emit RefundsEnabled();
     }
 
-    /**
+    /*
      * @dev Withdraws the beneficiary's funds.
      */
     function beneficiaryWithdraw() public virtual {
@@ -89,7 +89,7 @@ contract RefundEscrow is ConditionalEscrow {
         beneficiary().sendValue(address(this).balance);
     }
 
-    /**
+    /*
      * @dev Returns whether refundees can withdraw their deposits (be refunded). The overridden function receives a
      * 'payee' argument, but we ignore it here since the condition is global, not per-payee.
      */

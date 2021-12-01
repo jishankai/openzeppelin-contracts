@@ -5,12 +5,12 @@ pragma solidity ^0.8.0;
 import "../ERC721.sol";
 import "../../../utils/Context.sol";
 
-/**
+/*
  * @title ERC721 Burnable Token
  * @dev ERC721 Token that can be irreversibly burned (destroyed).
  */
 abstract contract ERC721Burnable is Context, ERC721 {
-    /**
+    /*
      * @dev Burns `tokenId`. See {ERC721-_burn}.
      *
      * Requirements:

@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../../../interfaces/IERC3156.sol";
 import "../ERC20.sol";
 
-/**
+/*
  * @dev Implementation of the ERC3156 Flash loans extension, as defined in
  * https://eips.ethereum.org/EIPS/eip-3156[ERC-3156].
  *
@@ -17,7 +17,7 @@ import "../ERC20.sol";
 abstract contract ERC20FlashMint is ERC20, IERC3156FlashLender {
     bytes32 private constant _RETURN_VALUE = keccak256("ERC3156FlashBorrower.onFlashLoan");
 
-    /**
+    /*
      * @dev Returns the maximum amount of tokens available for loan.
      * @param token The address of the token that is requested.
      * @return The amont of token that can be loaned.
@@ -26,7 +26,7 @@ abstract contract ERC20FlashMint is ERC20, IERC3156FlashLender {
         return token == address(this) ? type(uint256).max - ERC20.totalSupply() : 0;
     }
 
-    /**
+    /*
      * @dev Returns the fee applied when doing flash loans. By default this
      * implementation has 0 fees. This function can be overloaded to make
      * the flash loan mechanism deflationary.
@@ -41,7 +41,7 @@ abstract contract ERC20FlashMint is ERC20, IERC3156FlashLender {
         return 0;
     }
 
-    /**
+    /*
      * @dev Performs a flash loan. New tokens are minted and sent to the
      * `receiver`, who is required to implement the {IERC3156FlashBorrower}
      * interface. By the end of the flash loan, the receiver is expected to own

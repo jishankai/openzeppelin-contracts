@@ -9,7 +9,7 @@ import "../../utils/Address.sol";
 import "../../utils/Context.sol";
 import "../../utils/introspection/ERC165.sol";
 
-/**
+/*
  * @dev Implementation of the basic standard multi-token.
  * See https://eips.ethereum.org/EIPS/eip-1155
  * Originally based on code by Enjin: https://github.com/enjin/erc-1155
@@ -28,14 +28,14 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
     // Used as the URI for all token types by relying on ID substitution, e.g. https://token-cdn-domain/{id}.json
     string private _uri;
 
-    /**
+    /*
      * @dev See {_setURI}.
      */
     constructor(string memory uri_) {
         _setURI(uri_);
     }
 
-    /**
+    /*
      * @dev See {IERC165-supportsInterface}.
      */
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC165, IERC165) returns (bool) {
@@ -45,7 +45,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
             super.supportsInterface(interfaceId);
     }
 
-    /**
+    /*
      * @dev See {IERC1155MetadataURI-uri}.
      *
      * This implementation returns the same URI for *all* token types. It relies
@@ -59,7 +59,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         return _uri;
     }
 
-    /**
+    /*
      * @dev See {IERC1155-balanceOf}.
      *
      * Requirements:
@@ -71,7 +71,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         return _balances[id][account];
     }
 
-    /**
+    /*
      * @dev See {IERC1155-balanceOfBatch}.
      *
      * Requirements:
@@ -96,7 +96,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         return batchBalances;
     }
 
-    /**
+    /*
      * @dev See {IERC1155-setApprovalForAll}.
      */
     function setApprovalForAll(address operator, bool approved) public virtual override {
@@ -106,14 +106,14 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         emit ApprovalForAll(_msgSender(), operator, approved);
     }
 
-    /**
+    /*
      * @dev See {IERC1155-isApprovedForAll}.
      */
     function isApprovedForAll(address account, address operator) public view virtual override returns (bool) {
         return _operatorApprovals[account][operator];
     }
 
-    /**
+    /*
      * @dev See {IERC1155-safeTransferFrom}.
      */
     function safeTransferFrom(
@@ -130,7 +130,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _safeTransferFrom(from, to, id, amount, data);
     }
 
-    /**
+    /*
      * @dev See {IERC1155-safeBatchTransferFrom}.
      */
     function safeBatchTransferFrom(
@@ -147,7 +147,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _safeBatchTransferFrom(from, to, ids, amounts, data);
     }
 
-    /**
+    /*
      * @dev Transfers `amount` tokens of token type `id` from `from` to `to`.
      *
      * Emits a {TransferSingle} event.
@@ -184,7 +184,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _doSafeTransferAcceptanceCheck(operator, from, to, id, amount, data);
     }
 
-    /**
+    /*
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {_safeTransferFrom}.
      *
      * Emits a {TransferBatch} event.
@@ -225,7 +225,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _doSafeBatchTransferAcceptanceCheck(operator, from, to, ids, amounts, data);
     }
 
-    /**
+    /*
      * @dev Sets a new URI for all token types, by relying on the token type ID
      * substitution mechanism
      * https://eips.ethereum.org/EIPS/eip-1155#metadata[defined in the EIP].
@@ -248,7 +248,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _uri = newuri;
     }
 
-    /**
+    /*
      * @dev Creates `amount` tokens of token type `id`, and assigns them to `account`.
      *
      * Emits a {TransferSingle} event.
@@ -277,7 +277,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _doSafeTransferAcceptanceCheck(operator, address(0), account, id, amount, data);
     }
 
-    /**
+    /*
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {_mint}.
      *
      * Requirements:
@@ -308,7 +308,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         _doSafeBatchTransferAcceptanceCheck(operator, address(0), to, ids, amounts, data);
     }
 
-    /**
+    /*
      * @dev Destroys `amount` tokens of token type `id` from `account`
      *
      * Requirements:
@@ -336,7 +336,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         emit TransferSingle(operator, account, address(0), id, amount);
     }
 
-    /**
+    /*
      * @dev xref:ROOT:erc1155.adoc#batch-operations[Batched] version of {_burn}.
      *
      * Requirements:
@@ -369,7 +369,7 @@ contract ERC1155 is Context, ERC165, IERC1155, IERC1155MetadataURI {
         emit TransferBatch(operator, account, address(0), ids, amounts);
     }
 
-    /**
+    /*
      * @dev Hook that is called before any token transfer. This includes minting
      * and burning, as well as batched variants.
      *

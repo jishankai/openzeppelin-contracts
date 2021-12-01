@@ -8,7 +8,7 @@ import "../extensions/ERC20Pausable.sol";
 import "../../../access/AccessControlEnumerable.sol";
 import "../../../utils/Context.sol";
 
-/**
+/*
  * @dev {ERC20} token, including:
  *
  *  - ability for holders to burn (destroy) their tokens
@@ -26,7 +26,7 @@ contract ERC20PresetMinterPauser is Context, AccessControlEnumerable, ERC20Burna
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    /**
+    /*
      * @dev Grants `DEFAULT_ADMIN_ROLE`, `MINTER_ROLE` and `PAUSER_ROLE` to the
      * account that deploys the contract.
      *
@@ -39,7 +39,7 @@ contract ERC20PresetMinterPauser is Context, AccessControlEnumerable, ERC20Burna
         _setupRole(PAUSER_ROLE, _msgSender());
     }
 
-    /**
+    /*
      * @dev Creates `amount` new tokens for `to`.
      *
      * See {ERC20-_mint}.
@@ -53,7 +53,7 @@ contract ERC20PresetMinterPauser is Context, AccessControlEnumerable, ERC20Burna
         _mint(to, amount);
     }
 
-    /**
+    /*
      * @dev Pauses all token transfers.
      *
      * See {ERC20Pausable} and {Pausable-_pause}.
@@ -67,7 +67,7 @@ contract ERC20PresetMinterPauser is Context, AccessControlEnumerable, ERC20Burna
         _pause();
     }
 
-    /**
+    /*
      * @dev Unpauses all token transfers.
      *
      * See {ERC20Pausable} and {Pausable-_unpause}.

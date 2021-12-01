@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../utils/Context.sol";
 
-/**
+/*
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
  * specific functions.
@@ -21,21 +21,21 @@ abstract contract Ownable is Context {
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    /**
+    /*
      * @dev Initializes the contract setting the deployer as the initial owner.
      */
     constructor() {
         _setOwner(_msgSender());
     }
 
-    /**
+    /*
      * @dev Returns the address of the current owner.
      */
     function owner() public view virtual returns (address) {
         return _owner;
     }
 
-    /**
+    /*
      * @dev Throws if called by any account other than the owner.
      */
     modifier onlyOwner() {
@@ -43,7 +43,7 @@ abstract contract Ownable is Context {
         _;
     }
 
-    /**
+    /*
      * @dev Leaves the contract without owner. It will not be possible to call
      * `onlyOwner` functions anymore. Can only be called by the current owner.
      *
@@ -54,7 +54,7 @@ abstract contract Ownable is Context {
         _setOwner(address(0));
     }
 
-    /**
+    /*
      * @dev Transfers ownership of the contract to a new account (`newOwner`).
      * Can only be called by the current owner.
      */

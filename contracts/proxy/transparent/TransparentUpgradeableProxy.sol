@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../ERC1967/ERC1967Proxy.sol";
 
-/**
+/*
  * @dev This contract implements a proxy that is upgradeable by an admin.
  *
  * To avoid https://medium.com/nomic-labs-blog/malicious-backdoors-in-ethereum-proxies-62629adf3357[proxy selector
@@ -26,7 +26,7 @@ import "../ERC1967/ERC1967Proxy.sol";
  * you should think of the `ProxyAdmin` instance as the real administrative interface of your proxy.
  */
 contract TransparentUpgradeableProxy is ERC1967Proxy {
-    /**
+    /*
      * @dev Initializes an upgradeable proxy managed by `_admin`, backed by the implementation at `_logic`, and
      * optionally initialized with `_data` as explained in {ERC1967Proxy-constructor}.
      */
@@ -39,7 +39,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         _changeAdmin(admin_);
     }
 
-    /**
+    /*
      * @dev Modifier used internally that will delegate the call to the implementation unless the sender is the admin.
      */
     modifier ifAdmin() {
@@ -50,7 +50,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         }
     }
 
-    /**
+    /*
      * @dev Returns the current admin.
      *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyAdmin}.
@@ -63,7 +63,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         admin_ = _getAdmin();
     }
 
-    /**
+    /*
      * @dev Returns the current implementation.
      *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-getProxyImplementation}.
@@ -76,7 +76,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         implementation_ = _implementation();
     }
 
-    /**
+    /*
      * @dev Changes the admin of the proxy.
      *
      * Emits an {AdminChanged} event.
@@ -87,7 +87,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         _changeAdmin(newAdmin);
     }
 
-    /**
+    /*
      * @dev Upgrade the implementation of the proxy.
      *
      * NOTE: Only the admin can call this function. See {ProxyAdmin-upgrade}.
@@ -96,7 +96,7 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         _upgradeToAndCall(newImplementation, bytes(""), false);
     }
 
-    /**
+    /*
      * @dev Upgrade the implementation of the proxy, and then call a function from the new implementation as specified
      * by `data`, which should be an encoded function call. This is useful to initialize new storage variables in the
      * proxied contract.
@@ -107,14 +107,14 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
         _upgradeToAndCall(newImplementation, data, true);
     }
 
-    /**
+    /*
      * @dev Returns the current admin.
      */
     function _admin() internal view virtual returns (address) {
         return _getAdmin();
     }
 
-    /**
+    /*
      * @dev Makes sure the admin cannot access the fallback function. See {Proxy-_beforeFallback}.
      */
     function _beforeFallback() internal virtual override {

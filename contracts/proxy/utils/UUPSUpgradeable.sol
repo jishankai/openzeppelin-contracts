@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../ERC1967/ERC1967Upgrade.sol";
 
-/**
+/*
  * @dev An upgradeability mechanism designed for UUPS proxies. The functions included here can perform an upgrade of an
  * {ERC1967Proxy}, when this contract is set as the implementation behind such a proxy.
  *
@@ -20,7 +20,7 @@ abstract contract UUPSUpgradeable is ERC1967Upgrade {
     /// @custom:oz-upgrades-unsafe-allow state-variable-immutable state-variable-assignment
     address private immutable __self = address(this);
 
-    /**
+    /*
      * @dev Check that the execution is being performed through a delegatecall call and that the execution context is
      * a proxy contract with an implementation (as defined in ERC1967) pointing to self. This should only be the case
      * for UUPS and transparent proxies that are using the current contract as their implementation. Execution of a
@@ -33,7 +33,7 @@ abstract contract UUPSUpgradeable is ERC1967Upgrade {
         _;
     }
 
-    /**
+    /*
      * @dev Upgrade the implementation of the proxy to `newImplementation`.
      *
      * Calls {_authorizeUpgrade}.
@@ -45,7 +45,7 @@ abstract contract UUPSUpgradeable is ERC1967Upgrade {
         _upgradeToAndCallSecure(newImplementation, new bytes(0), false);
     }
 
-    /**
+    /*
      * @dev Upgrade the implementation of the proxy to `newImplementation`, and subsequently execute the function call
      * encoded in `data`.
      *
@@ -58,7 +58,7 @@ abstract contract UUPSUpgradeable is ERC1967Upgrade {
         _upgradeToAndCallSecure(newImplementation, data, true);
     }
 
-    /**
+    /*
      * @dev Function that should revert when `msg.sender` is not authorized to upgrade the contract. Called by
      * {upgradeTo} and {upgradeToAndCall}.
      *

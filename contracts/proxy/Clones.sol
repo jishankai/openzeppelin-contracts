@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-/**
+/*
  * @dev https://eips.ethereum.org/EIPS/eip-1167[EIP 1167] is a standard for
  * deploying minimal proxy contracts, also known as "clones".
  *
@@ -16,7 +16,7 @@ pragma solidity ^0.8.0;
  * _Available since v3.4._
  */
 library Clones {
-    /**
+    /*
      * @dev Deploys and returns the address of a clone that mimics the behaviour of `implementation`.
      *
      * This function uses the create opcode, which should never revert.
@@ -32,7 +32,7 @@ library Clones {
         require(instance != address(0), "ERC1167: create failed");
     }
 
-    /**
+    /*
      * @dev Deploys and returns the address of a clone that mimics the behaviour of `implementation`.
      *
      * This function uses the create2 opcode and a `salt` to deterministically deploy
@@ -50,7 +50,7 @@ library Clones {
         require(instance != address(0), "ERC1167: create2 failed");
     }
 
-    /**
+    /*
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
     function predictDeterministicAddress(
@@ -70,7 +70,7 @@ library Clones {
         }
     }
 
-    /**
+    /*
      * @dev Computes the address of a clone deployed using {Clones-cloneDeterministic}.
      */
     function predictDeterministicAddress(address implementation, bytes32 salt)

@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 import "../ERC721.sol";
 
-/**
+/*
  * @dev ERC721 token with storage based token URI management.
  */
 abstract contract ERC721URIStorage is ERC721 {
@@ -13,7 +13,7 @@ abstract contract ERC721URIStorage is ERC721 {
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;
 
-    /**
+    /*
      * @dev See {IERC721Metadata-tokenURI}.
      */
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
@@ -34,7 +34,7 @@ abstract contract ERC721URIStorage is ERC721 {
         return super.tokenURI(tokenId);
     }
 
-    /**
+    /*
      * @dev Sets `_tokenURI` as the tokenURI of `tokenId`.
      *
      * Requirements:
@@ -46,7 +46,7 @@ abstract contract ERC721URIStorage is ERC721 {
         _tokenURIs[tokenId] = _tokenURI;
     }
 
-    /**
+    /*
      * @dev Destroys `tokenId`.
      * The approval is cleared when the token is burned.
      *

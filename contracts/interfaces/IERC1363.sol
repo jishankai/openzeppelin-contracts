@@ -22,7 +22,7 @@ interface IERC1363 is IERC165, IERC20 {
      *   bytes4(keccak256('approveAndCall(address,uint256,bytes)'))
      */
 
-    /**
+    /*
      * @dev Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver
      * @param to address The address which you want to transfer to
      * @param value uint256 The amount of tokens to be transferred
@@ -30,7 +30,7 @@ interface IERC1363 is IERC165, IERC20 {
      */
     function transferAndCall(address to, uint256 value) external returns (bool);
 
-    /**
+    /*
      * @dev Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver
      * @param to address The address which you want to transfer to
      * @param value uint256 The amount of tokens to be transferred
@@ -43,7 +43,7 @@ interface IERC1363 is IERC165, IERC20 {
         bytes memory data
     ) external returns (bool);
 
-    /**
+    /*
      * @dev Transfer tokens from one address to another and then call `onTransferReceived` on receiver
      * @param from address The address which you want to send tokens from
      * @param to address The address which you want to transfer to
@@ -56,7 +56,7 @@ interface IERC1363 is IERC165, IERC20 {
         uint256 value
     ) external returns (bool);
 
-    /**
+    /*
      * @dev Transfer tokens from one address to another and then call `onTransferReceived` on receiver
      * @param from address The address which you want to send tokens from
      * @param to address The address which you want to transfer to
@@ -71,7 +71,7 @@ interface IERC1363 is IERC165, IERC20 {
         bytes memory data
     ) external returns (bool);
 
-    /**
+    /*
      * @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender
      * and then call `onApprovalReceived` on spender.
      * @param spender address The address which will spend the funds
@@ -79,7 +79,7 @@ interface IERC1363 is IERC165, IERC20 {
      */
     function approveAndCall(address spender, uint256 value) external returns (bool);
 
-    /**
+    /*
      * @dev Approve the passed address to spend the specified amount of tokens on behalf of msg.sender
      * and then call `onApprovalReceived` on spender.
      * @param spender address The address which will spend the funds
